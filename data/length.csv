@@ -1,0 +1,10 @@
+Unit Type,Length,
+Master Unit,meter,
+Unit Name,Conversion Value,Notes
+foot,3.28084,Test note 1
+km,0.001,
+yard,1.093613,
+mile,0.0006213712,Test note 3
+inch,39.37008,
+mm,1000,
+cm,100,
