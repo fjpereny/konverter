@@ -18,12 +18,12 @@ public:
 private slots:
 
     void on_actionClose_triggered();
-
     void on_refUnitCombo_currentIndexChanged(int index);
-
-    void on_actionImport_triggered();
-
     void on_editCheckBox_toggled(bool checked);
+    void on_unitTypeList_itemSelectionChanged();
+    void on_inputValueLineEdit_textChanged(const QString &arg1);
+
+    void on_decimalSpinBox_valueChanged(int arg1);
 
 private:
     Ui::DataTableWindow *ui;
@@ -34,16 +34,17 @@ private:
     QString *master_name;
     bool *enable_calcs;
     QStringList *data_file_list;
+    double *prev_input_value;
+    int *sig_digits;
 
-    void updateColumnNames();
-    void updateColumnNames(QString unit_label);
     void import_csv(QString file_name);
     void load_unit_dropdown();
     void set_master_unit();
     void load_table();
-    void clear_table_data();
+    void clear_data();
     void read_file_names();
     void load_category_list();
+    void refresh_data();
 
 };
 

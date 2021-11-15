@@ -2,7 +2,10 @@
 #include "ui_datatablewindow.h"
 #include <QFile>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <vector>
+#include <iostream>
+
 
 DataTableWindow::DataTableWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,14 +16,21 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     unit_notes(new QStringList),
     master_name(new QString),
     enable_calcs(new bool),
-    data_file_list(new QStringList)
+    data_file_list(new QStringList),
+    prev_input_value(new double),
+    sig_digits(new int)
 
 {
+    *enable_calcs = false;
     ui->setupUi(this);
     ui->unitTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->unitTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    updateColumnNames();
-    *enable_calcs = false;
+    read_file_names();
+    load_category_list();
+    *prev_input_value = 1.0;
+    *sig_digits = 3;
+    ui->decimalSpinBox->setValue(*sig_digits);
+
 }
 
 DataTableWindow::~DataTableWindow()
@@ -33,6 +43,8 @@ DataTableWindow::~DataTableWindow()
     delete master_name;
     delete enable_calcs;
     delete data_file_list;
+    delete prev_input_value;
+    delete sig_digits;
 }
 
 
@@ -42,26 +54,17 @@ void DataTableWindow::on_actionClose_triggered()
 }
 
 
-void DataTableWindow::updateColumnNames()
-{
-    QStringList col_names = {"Unit Name", "Conversion Value", "Notes"};
-    ui->unitTable->setHorizontalHeaderLabels(col_names);
-}
-
-void DataTableWindow::updateColumnNames(QString unit_label)
-{
-    QStringList col_names = {"Unit Name", "Conversion Value ( x / " + unit_label + " )", "Notes"};
-    ui->unitTable->setHorizontalHeaderLabels(col_names);
-}
-
-
 void DataTableWindow::read_file_names()
 {
     ui->unitTypeList->clear();
 
-    QString path = QDir::currentPath() + "/data/";
-    QDir dir(path);
-    *data_file_list = dir.entryList(QDir::Files);
+    QString path_default_files = QDir::currentPath() + "/data/default/";
+    QString path_custom_files = QDir::currentPath() + "/data/";
+
+    QDir dir_default(path_default_files);
+    *data_file_list = dir_default.entryList(QDir::Files);
+    QDir dir_custom(path_custom_files);
+    *data_file_list += dir_custom.entryList(QDir::Files);
 }
 
 
@@ -76,36 +79,42 @@ void DataTableWindow::load_category_list()
 }
 
 
-void DataTableWindow::on_actionImport_triggered()
+void DataTableWindow::refresh_data()
 {
     *enable_calcs = false;
-    clear_table_data();
-    read_file_names();
-    import_csv(QDir::currentPath() + "/data/Length.csv");
+    clear_data();
+    import_csv(ui->unitTypeList->currentItem()->text());
     load_table();
+    ui->inputValueLineEdit->setText("1");
     load_unit_dropdown();
-    load_category_list();
     set_master_unit();
     *enable_calcs = true;
 }
 
 
-void DataTableWindow::clear_table_data()
+void DataTableWindow::clear_data()
 {
     unit_names->clear();
     unit_values->clear();
+    displayed_values->clear();
     unit_notes->clear();
-
-    ui->unitTable->clear();
-    ui->unitTable->setRowCount(0);
-    updateColumnNames();;
 }
 
 
 void DataTableWindow::import_csv(QString file_name)
 {
-    // "/home/frank/kde/src/konverter/data/length.csv"
-    QFile file(file_name);
+    QString file_path;
+    if (QFileInfo::exists(QDir::currentPath() + "/data/" + file_name + ".csv"))
+    {
+        file_path = QDir::currentPath() + "/data/" + file_name + ".csv";
+    }
+
+    else if (QFileInfo::exists(QDir::currentPath() + "/data/default/" + file_name + ".dat"))
+    {
+        file_path = QDir::currentPath() + "/data/default/" + file_name + ".dat";
+    }
+
+    QFile file(file_path);
     if (file.open(QIODevice::ReadOnly))
     {
         QTextStream stream(&file);
@@ -144,6 +153,7 @@ void DataTableWindow::load_table()
 {
     ui->unitTable->setRowCount(0);
     ui->unitTable->setRowCount(unit_names->count());
+
     for (int row_index=0; row_index < unit_names->count(); row_index++)
     {
         QTableWidgetItem *item_name = ui->unitTable->item(row_index, 0);
@@ -160,7 +170,7 @@ void DataTableWindow::load_table()
             item_value = new QTableWidgetItem();
             ui->unitTable->setItem(row_index, 1, item_value);
         }
-        item_value->setText(QString::number(displayed_values->at(row_index), 'f', 7));
+        item_value->setText(QString::number(displayed_values->at(row_index), 'f', *sig_digits));
 
         QTableWidgetItem *item_note = ui->unitTable->item(row_index, 2);
         if (!item_note)
@@ -170,9 +180,6 @@ void DataTableWindow::load_table()
         }
         item_note->setText(unit_notes->at(row_index));
     }
-        ui->unitTable->item(0, 0)->setFlags(Qt::ItemIsSelectable);
-        ui->unitTable->item(0, 1)->setFlags(Qt::ItemIsSelectable);
-        ui->unitTable->item(0, 2)->setFlags(Qt::ItemIsSelectable);
         ui->unitTable->sortByColumn(0, Qt::SortOrder::AscendingOrder);
 }
 
@@ -204,10 +211,10 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
         {
             displayed_values->at(i) = unit_values->at(i);
             displayed_values->at(i) /= target_value;
+            displayed_values->at(i) *= *prev_input_value;
         }
 
         load_table();
-        updateColumnNames(ui->refUnitCombo->currentText());
     }
 }
 
@@ -225,6 +232,41 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
         ui->addRowButton->setEnabled(false);
         ui->delRowButton->setEnabled(false);
         ui->unitTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    }
+}
+
+
+void DataTableWindow::on_unitTypeList_itemSelectionChanged()
+{
+    refresh_data();
+}
+
+
+void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
+{
+    if (*enable_calcs)
+    {
+        double input_value = ui->inputValueLineEdit->text().toDouble();
+        if (input_value != 0)
+        {
+            for (int i=0; i<displayed_values->size(); i++)
+            {
+                displayed_values->at(i) *= input_value / (*prev_input_value);
+            }
+
+            *prev_input_value = input_value;
+            load_table();
+        }
+    }
+}
+
+
+void DataTableWindow::on_decimalSpinBox_valueChanged(int decimal_places)
+{
+    if (*enable_calcs)
+    {
+        *sig_digits = decimal_places;
+        load_table();
     }
 }
 
