@@ -1,10 +1,12 @@
 #include "datatablewindow.h"
 #include "ui_datatablewindow.h"
+#include "aboutdialog.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <vector>
 #include <iostream>
+#include <QLocale>
 
 
 DataTableWindow::DataTableWindow(QWidget *parent) :
@@ -86,6 +88,7 @@ void DataTableWindow::refresh_data()
     import_csv(ui->unitTypeList->currentItem()->text());
     load_table();
     ui->inputValueLineEdit->setText("1");
+    *prev_input_value = 1.0;
     load_unit_dropdown();
     set_master_unit();
     *enable_calcs = true;
@@ -170,7 +173,8 @@ void DataTableWindow::load_table()
             item_value = new QTableWidgetItem();
             ui->unitTable->setItem(row_index, 1, item_value);
         }
-        item_value->setText(QString::number(displayed_values->at(row_index), 'f', *sig_digits));
+        QLocale locale;
+        item_value->setText(locale.toString(displayed_values->at(row_index), 'f', *sig_digits));
 
         QTableWidgetItem *item_note = ui->unitTable->item(row_index, 2);
         if (!item_note)
@@ -268,5 +272,12 @@ void DataTableWindow::on_decimalSpinBox_valueChanged(int decimal_places)
         *sig_digits = decimal_places;
         load_table();
     }
+}
+
+
+void DataTableWindow::on_actionAbout_triggered()
+{
+    AboutDialog *d = new AboutDialog();
+    d->show();
 }
 

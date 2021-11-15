@@ -2,6 +2,36 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>AboutDialog</name>
+    <message>
+        <location filename="aboutdialog.ui" line="14"/>
+        <source>About konverter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="48"/>
+        <source>konverter 0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="58"/>
+        <source>Copyright © 2021 Frank Pereny</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="68"/>
+        <source>https://github.com/fjpereny/konverter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="aboutdialog.ui" line="81"/>
+        <source>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DataTableWindow</name>
     <message>
         <location filename="datatablewindow.ui" line="14"/>
@@ -72,7 +102,12 @@
     </message>
     <message>
         <location filename="datatablewindow.ui" line="287"/>
-        <source>View</source>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="343"/>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -118,11 +153,6 @@
     <message>
         <location filename="datatablewindow.ui" line="338"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="343"/>
-        <source>Decimal Precision</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -26,6 +26,10 @@ set(PROJECT_SOURCES
         datatablewindow.h
         datatablewindow.cpp
         datatablewindow.ui
+
+        aboutdialog.cpp
+        aboutdialog.h
+        aboutdialog.ui
         ${TS_FILES}
 )
 

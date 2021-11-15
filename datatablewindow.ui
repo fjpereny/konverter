@@ -282,15 +282,15 @@
     <addaction name="separator"/>
     <addaction name="actionChange_Master_Unit"/>
    </widget>
-   <widget class="QMenu" name="menuView">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>View</string>
+     <string>Help</string>
     </property>
-    <addaction name="actionDecimal_Precision"/>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
-   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionImport">
@@ -338,9 +338,9 @@
     <string>Paste</string>
    </property>
   </action>
-  <action name="actionDecimal_Precision">
+  <action name="actionAbout">
    <property name="text">
-    <string>Decimal Precision</string>
+    <string>About</string>
    </property>
   </action>
  </widget>

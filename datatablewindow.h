@@ -25,6 +25,8 @@ private slots:
 
     void on_decimalSpinBox_valueChanged(int arg1);
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::DataTableWindow *ui;
     QStringList *unit_names;
