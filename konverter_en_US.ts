@@ -71,48 +71,58 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="258"/>
+        <location filename="datatablewindow.ui" line="254"/>
+        <source>View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="265"/>
         <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="263"/>
+        <location filename="datatablewindow.ui" line="270"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="268"/>
+        <location filename="datatablewindow.ui" line="275"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="273"/>
+        <location filename="datatablewindow.ui" line="280"/>
         <source>Change Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="278"/>
+        <location filename="datatablewindow.ui" line="285"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="283"/>
+        <location filename="datatablewindow.ui" line="290"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="288"/>
+        <location filename="datatablewindow.ui" line="295"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="293"/>
+        <location filename="datatablewindow.ui" line="300"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="298"/>
+        <location filename="datatablewindow.ui" line="305"/>
         <source>Paste</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="310"/>
+        <source>Decimal Precision</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

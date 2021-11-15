@@ -9,6 +9,7 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     ui(new Ui::DataTableWindow),
     unit_names(new QStringList),
     unit_values(new std::vector<double>),
+    displayed_values(new std::vector<double>),
     unit_notes(new QStringList),
     master_name(new QString),
     enable_calcs(new bool),
@@ -27,6 +28,7 @@ DataTableWindow::~DataTableWindow()
     delete ui;
     delete unit_names;
     delete unit_values;
+    delete displayed_values;
     delete unit_notes;
     delete master_name;
     delete enable_calcs;
@@ -114,6 +116,7 @@ void DataTableWindow::import_csv(QString file_name)
 
         unit_names->append(*master_name);
         unit_values->push_back(1.0);
+        displayed_values->push_back(1.0);
         unit_notes->append("Master Unit");
 
         while (!stream.atEnd())
@@ -122,6 +125,7 @@ void DataTableWindow::import_csv(QString file_name)
             QStringList line_list = line.split(",");
             unit_names->append(line_list.at(0));
             unit_values->push_back(line_list.at(1).toDouble());
+            displayed_values->push_back(line_list.at(1).toDouble());
             if (line_list.size() == 3)
             {
                 unit_notes->append(line_list.at(2));
@@ -156,7 +160,7 @@ void DataTableWindow::load_table()
             item_value = new QTableWidgetItem();
             ui->unitTable->setItem(row_index, 1, item_value);
         }
-        item_value->setText(QString::number(unit_values->at(row_index), 'f', 7));
+        item_value->setText(QString::number(displayed_values->at(row_index), 'f', 7));
 
         QTableWidgetItem *item_note = ui->unitTable->item(row_index, 2);
         if (!item_note)
@@ -198,7 +202,8 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 
         for (int i=0; i < unit_values->size(); i++)
         {
-            unit_values->at(i) /= target_value;
+            displayed_values->at(i) = unit_values->at(i);
+            displayed_values->at(i) /= target_value;
         }
 
         load_table();
