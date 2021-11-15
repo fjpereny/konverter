@@ -42,21 +42,13 @@ void DataTableWindow::on_actionClose_triggered()
 
 void DataTableWindow::updateColumnNames()
 {
-    QStringList col_names;
-    col_names.append("Unit Name");
-    QString col2_name = "Conversion Value";
-    col_names.append(col2_name);
-    col_names.append("Notes");
+    QStringList col_names = {"Unit Name", "Conversion Value", "Notes"};
     ui->unitTable->setHorizontalHeaderLabels(col_names);
 }
 
 void DataTableWindow::updateColumnNames(QString unit_label)
 {
-    QStringList col_names;
-    col_names.append("Unit Name");
-    QString col2_name = "Conversion Value ( x/" + unit_label + " )";
-    col_names.append(col2_name);
-    col_names.append("Notes");
+    QStringList col_names = {"Unit Name", "Conversion Value ( x / " + unit_label + " )", "Notes"};
     ui->unitTable->setHorizontalHeaderLabels(col_names);
 }
 
