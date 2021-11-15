@@ -29,6 +29,7 @@ private:
     Ui::DataTableWindow *ui;
     QStringList *unit_names;
     std::vector<double> *unit_values;
+    std::vector<double> *displayed_values;
     QStringList *unit_notes;
     QString *master_name;
     bool *enable_calcs;
