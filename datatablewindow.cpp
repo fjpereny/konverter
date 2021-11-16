@@ -111,6 +111,7 @@ void DataTableWindow::refresh_data()
     *enable_calcs = true;
     set_edit_checkbox_status();
     status_bar_label->setText("");
+    ui->statusbar->setStyleSheet("background-color : none;");
 }
 
 
@@ -302,14 +303,8 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         {
             if (ui->inputValueLineEdit->text() != "")
             {
-//                ui->inputValueLineEdit->setPalette(*error_entry_red);
-//                ui->statusbar->setStyleSheet("background-color : rgb(255, 100, 100);");
                 status_bar_label->setText("Invalid input...");
                 ui->statusbar->setStyleSheet("background-color : rgb(255, 100, 100);");
-            }
-            else
-            {
-                ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
             }
         }
     }
@@ -360,7 +355,8 @@ void DataTableWindow::copy_selected_cells()
 
         if (index_list.count() == 1)
         {
-            status_bar_label->setText(" Value copied to clipboard... ");
+            status_bar_label->setText(" Cell copied to clipboard... ");
+            ui->statusbar->setStyleSheet("background-color : rgb(25, 125, 75);");
         }
         else
         {
