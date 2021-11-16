@@ -22,9 +22,7 @@ private slots:
     void on_editCheckBox_toggled(bool checked);
     void on_unitTypeList_itemSelectionChanged();
     void on_inputValueLineEdit_textChanged(const QString &arg1);
-
     void on_decimalSpinBox_valueChanged(int arg1);
-
     void on_actionAbout_triggered();
 
 private:
@@ -38,6 +36,7 @@ private:
     QStringList *data_file_list;
     double *prev_input_value;
     int *sig_digits;
+    QPalette *error_entry_red;
 
     void import_csv(QString file_name);
     void load_unit_dropdown();

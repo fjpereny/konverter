@@ -20,19 +20,23 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     enable_calcs(new bool),
     data_file_list(new QStringList),
     prev_input_value(new double),
-    sig_digits(new int)
+    sig_digits(new int),
+    error_entry_red(new QPalette)
 
 {
     *enable_calcs = false;
     ui->setupUi(this);
+
     ui->unitTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->unitTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->unitTypeList->sortItems(Qt::SortOrder::AscendingOrder);
+
     read_file_names();
     load_category_list();
     *prev_input_value = 1.0;
     *sig_digits = 3;
     ui->decimalSpinBox->setValue(*sig_digits);
-
+    error_entry_red->setColor(QPalette::Base, Qt::red);
 }
 
 DataTableWindow::~DataTableWindow()
@@ -253,6 +257,7 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         double input_value = ui->inputValueLineEdit->text().toDouble();
         if (input_value != 0)
         {
+            ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
             for (int i=0; i<displayed_values->size(); i++)
             {
                 displayed_values->at(i) *= input_value / (*prev_input_value);
@@ -260,6 +265,13 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
 
             *prev_input_value = input_value;
             load_table();
+        }
+        else
+        {
+            if (ui->inputValueLineEdit->text() != "")
+                ui->inputValueLineEdit->setPalette(*error_entry_red);
+            else
+                ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
         }
     }
 }
