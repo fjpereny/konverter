@@ -46,6 +46,7 @@ private:
     void read_file_names();
     void load_category_list();
     void refresh_data();
+    void set_edit_checkbox_status();
 
 };
 

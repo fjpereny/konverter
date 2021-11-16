@@ -37,6 +37,11 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     *sig_digits = 3;
     ui->decimalSpinBox->setValue(*sig_digits);
     error_entry_red->setColor(QPalette::Base, Qt::red);
+    error_entry_red->setColor(QPalette::Text, Qt::white);
+
+    *enable_calcs = true;
+    ui->unitTypeList->setCurrentItem(ui->unitTypeList->item(0));
+    refresh_data();
 }
 
 DataTableWindow::~DataTableWindow()
@@ -96,6 +101,22 @@ void DataTableWindow::refresh_data()
     load_unit_dropdown();
     set_master_unit();
     *enable_calcs = true;
+    set_edit_checkbox_status();
+}
+
+
+void DataTableWindow::set_edit_checkbox_status()
+{
+    QString selected = ui->unitTypeList->currentItem()->text();
+    if (selected.contains("(Built-In)"))
+    {
+        ui->editCheckBox->setChecked(false);
+        ui->editCheckBox->setEnabled(false);
+    }
+    else
+    {
+        ui->editCheckBox->setEnabled(true);
+    }
 }
 
 

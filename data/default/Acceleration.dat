@@ -1,9 +1,0 @@
-Unit Type,Acceleration,
-Master Unit,m/s^2,
-Unit Name,Conversion Value,Notes
-ft/s^2,3.28084,
-cm/s^2,100,
-inch/s^2,39.37,
-g,0.101971621,
-mph/s,2.23693629,
-kph/s,3.6,
