@@ -2,6 +2,7 @@
 #define DATATABLEWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
 
 namespace Ui {
 class DataTableWindow;
@@ -25,6 +26,8 @@ private slots:
     void on_decimalSpinBox_valueChanged(int arg1);
     void on_actionAbout_triggered();
 
+    void on_unitTable_cellDoubleClicked(int row, int column);
+
 private:
     Ui::DataTableWindow *ui;
     QStringList *unit_names;
@@ -37,6 +40,7 @@ private:
     double *prev_input_value;
     int *sig_digits;
     QPalette *error_entry_red;
+    QLabel *status_bar_label;
 
     void import_csv(QString file_name);
     void load_unit_dropdown();

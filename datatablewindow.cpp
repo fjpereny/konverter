@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <QLocale>
+#include <QClipboard>
 
 
 DataTableWindow::DataTableWindow(QWidget *parent) :
@@ -21,7 +22,8 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     data_file_list(new QStringList),
     prev_input_value(new double),
     sig_digits(new int),
-    error_entry_red(new QPalette)
+    error_entry_red(new QPalette),
+    status_bar_label(new QLabel)
 
 {
     *enable_calcs = false;
@@ -42,6 +44,9 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     *enable_calcs = true;
     ui->unitTypeList->setCurrentItem(ui->unitTypeList->item(0));
     refresh_data();
+
+    ui->statusbar->addWidget(status_bar_label);
+    status_bar_label->setText("");
 }
 
 DataTableWindow::~DataTableWindow()
@@ -56,6 +61,7 @@ DataTableWindow::~DataTableWindow()
     delete data_file_list;
     delete prev_input_value;
     delete sig_digits;
+    delete error_entry_red;
 }
 
 
@@ -102,6 +108,7 @@ void DataTableWindow::refresh_data()
     set_master_unit();
     *enable_calcs = true;
     set_edit_checkbox_status();
+    status_bar_label->setText("");
 }
 
 
@@ -273,6 +280,7 @@ void DataTableWindow::on_unitTypeList_itemSelectionChanged()
 
 void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
 {
+    status_bar_label->setText("");
     if (*enable_calcs)
     {
         double input_value = ui->inputValueLineEdit->text().toDouble();
@@ -290,7 +298,10 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         else
         {
             if (ui->inputValueLineEdit->text() != "")
+            {
                 ui->inputValueLineEdit->setPalette(*error_entry_red);
+                status_bar_label->setText("Invalid input...");
+            }
             else
                 ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
         }
@@ -312,5 +323,13 @@ void DataTableWindow::on_actionAbout_triggered()
 {
     AboutDialog *d = new AboutDialog();
     d->show();
+}
+
+
+void DataTableWindow::on_unitTable_cellDoubleClicked(int row, int column)
+{
+    status_bar_label->setText("Value copied to clipboard...");
+    QClipboard *cb = QGuiApplication::clipboard();
+    cb->setText(ui->unitTable->item(row, column)->text());
 }
 
