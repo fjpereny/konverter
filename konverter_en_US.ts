@@ -45,13 +45,13 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
     </message>
     <message>
         <location filename="datatablewindow.ui" line="48"/>
-        <location filename="datatablewindow.ui" line="226"/>
+        <location filename="datatablewindow.ui" line="232"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="datatablewindow.ui" line="55"/>
-        <location filename="datatablewindow.ui" line="236"/>
+        <location filename="datatablewindow.ui" line="242"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
@@ -66,92 +66,107 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="183"/>
+        <location filename="datatablewindow.ui" line="137"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit. To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="140"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit.  To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="189"/>
         <source>Unit Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="188"/>
+        <location filename="datatablewindow.ui" line="194"/>
         <source>Conversion Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="193"/>
+        <location filename="datatablewindow.ui" line="199"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="216"/>
+        <location filename="datatablewindow.ui" line="222"/>
         <source>Enable Editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="243"/>
+        <location filename="datatablewindow.ui" line="249"/>
         <source>Save Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="264"/>
+        <location filename="datatablewindow.ui" line="270"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="274"/>
+        <location filename="datatablewindow.ui" line="280"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="287"/>
+        <location filename="datatablewindow.ui" line="293"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="298"/>
+        <location filename="datatablewindow.ui" line="304"/>
         <source>Import</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="303"/>
+        <location filename="datatablewindow.ui" line="309"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="308"/>
+        <location filename="datatablewindow.ui" line="314"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="313"/>
+        <location filename="datatablewindow.ui" line="319"/>
         <source>Change Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="318"/>
+        <location filename="datatablewindow.ui" line="324"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="323"/>
+        <location filename="datatablewindow.ui" line="329"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="328"/>
+        <location filename="datatablewindow.ui" line="334"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="333"/>
+        <location filename="datatablewindow.ui" line="339"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="338"/>
+        <location filename="datatablewindow.ui" line="342"/>
+        <source>Ctrl+C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="347"/>
         <source>Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="343"/>
+        <location filename="datatablewindow.ui" line="352"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>

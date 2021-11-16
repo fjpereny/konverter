@@ -38,6 +38,8 @@ DataTableWindow::DataTableWindow(QWidget *parent) :
     *prev_input_value = 1.0;
     *sig_digits = 3;
     ui->decimalSpinBox->setValue(*sig_digits);
+
+    // Input error palette settings
     error_entry_red->setColor(QPalette::Base, Qt::red);
     error_entry_red->setColor(QPalette::Text, Qt::white);
 
@@ -281,6 +283,7 @@ void DataTableWindow::on_unitTypeList_itemSelectionChanged()
 void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
 {
     status_bar_label->setText("");
+    ui->statusbar->setStyleSheet("background-color : none");
     if (*enable_calcs)
     {
         double input_value = ui->inputValueLineEdit->text().toDouble();
@@ -299,11 +302,15 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         {
             if (ui->inputValueLineEdit->text() != "")
             {
-                ui->inputValueLineEdit->setPalette(*error_entry_red);
+//                ui->inputValueLineEdit->setPalette(*error_entry_red);
+//                ui->statusbar->setStyleSheet("background-color : rgb(255, 100, 100);");
                 status_bar_label->setText("Invalid input...");
+                ui->statusbar->setStyleSheet("background-color : rgb(255, 100, 100);");
             }
             else
+            {
                 ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
+            }
         }
     }
 }
@@ -326,10 +333,43 @@ void DataTableWindow::on_actionAbout_triggered()
 }
 
 
-void DataTableWindow::on_unitTable_cellDoubleClicked(int row, int column)
+void DataTableWindow::on_unitTable_itemSelectionChanged()
 {
-    status_bar_label->setText("Value copied to clipboard...");
-    QClipboard *cb = QGuiApplication::clipboard();
-    cb->setText(ui->unitTable->item(row, column)->text());
+    copy_selected_cells();
 }
 
+
+void DataTableWindow::copy_selected_cells()
+{
+    QModelIndexList index_list = ui->unitTable->selectionModel()->selectedIndexes();
+    if (ui->unitTable->hasFocus() && (index_list.count() > 0))
+    {
+        QString output("");
+
+        output += index_list.at(0).data().toString();
+        int prev_row = index_list.at(0).row();
+        for (int i=1; i<index_list.count(); i++)
+        {
+            if (index_list.at(i).row() == prev_row)
+                output += "\t";
+            else
+                output += "\n";
+            output += index_list.at(i).data().toString();
+            prev_row = index_list.at(i).row();
+        }
+
+        if (index_list.count() == 1)
+        {
+            status_bar_label->setText(" Value copied to clipboard... ");
+        }
+        else
+        {
+            status_bar_label->setText(" Cells copied to clipboard... ");
+            ui->statusbar->setStyleSheet("background-color : rgb(25, 125, 75);");
+        }
+
+        QClipboard *cb = QGuiApplication::clipboard();
+        cb->clear();
+        cb->setText(output);
+    }
+}

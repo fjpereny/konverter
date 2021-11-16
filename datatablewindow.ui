@@ -133,6 +133,12 @@
         </item>
         <item>
          <widget class="QLineEdit" name="masterLineEdit">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit. To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="whatsThis">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit.  To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -331,6 +337,9 @@
   <action name="actionCopy">
    <property name="text">
     <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
    </property>
   </action>
   <action name="actionPaste">
