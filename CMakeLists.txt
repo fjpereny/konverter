@@ -19,10 +19,6 @@ set(TS_FILES konverter_en_US.ts)
 set(PROJECT_SOURCES
         main.cpp
 
-        mainwindow.cpp        
-        mainwindow.h
-        mainwindow.ui
-
         datatablewindow.h
         datatablewindow.cpp
         datatablewindow.ui

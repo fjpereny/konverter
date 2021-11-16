@@ -106,11 +106,6 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="343"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="datatablewindow.ui" line="298"/>
         <source>Import</source>
         <translation type="unfinished"></translation>
@@ -155,12 +150,9 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <source>Paste</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.ui" line="14"/>
-        <source>Konverter</source>
+        <location filename="datatablewindow.ui" line="343"/>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
