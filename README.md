@@ -24,8 +24,10 @@ Konverter is available for Linux, MacOS, and Windows.  For more information visi
 ### Instant Unit Conversion
 
 ### One-Click Instant Copy
+Copy a single cell or range of data to the clipboard with a single click of the mouse.
 
 ### User-Defined Conversion Tables
+Create, save and share your own customized units of measurement.
 
 ### USer-Friendly Data Format
-All data is stored in CSV (comma separated value) format and can be opened and edited in any spreadsheet or text-editing software.
+Easily create your own automatic conversion tables without the need for special knowldege or software.  All data is stored in CSV (comma separated value) format and can be opened and edited in any spreadsheet or text-editing software.
