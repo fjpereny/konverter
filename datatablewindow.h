@@ -26,6 +26,10 @@ private slots:
     void on_decimalSpinBox_valueChanged(int arg1);
     void on_actionAbout_triggered();
     void on_unitTable_itemSelectionChanged();
+    void on_delTypeButton_clicked();
+    void on_addTypeButton_clicked();
+
+    void on_actionChange_Master_Unit_triggered();
 
 private:
     Ui::DataTableWindow *ui;
@@ -51,6 +55,7 @@ private:
     void refresh_data();
     void set_edit_checkbox_status();
     void copy_selected_cells();
+    void keyPressEvent(QKeyEvent *event);
 
 };
 

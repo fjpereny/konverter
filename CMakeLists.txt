@@ -26,6 +26,10 @@ set(PROJECT_SOURCES
         aboutdialog.cpp
         aboutdialog.h
         aboutdialog.ui
+
+        newunitdialog.h
+        newunitdialog.cpp
+        newunitdialog.ui
         ${TS_FILES}
 )
 

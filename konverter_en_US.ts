@@ -10,17 +10,17 @@
     </message>
     <message>
         <location filename="aboutdialog.ui" line="48"/>
-        <source>konverter 0.1</source>
+        <source>Konverter 0.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="58"/>
-        <source>Copyright © 2021 Frank Pereny</source>
+        <source>Copyright © 2021 &lt;a href=&quot;mailto:fjpereny@gmail.com&quot;&gt;Frank Pereny&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="68"/>
-        <source>https://github.com/fjpereny/konverter</source>
+        <source>&lt;a href=&quot;https://github.com/fjpereny/konverter&quot;&gt;https://github.com/fjpereny/konverter&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -45,129 +45,147 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
     </message>
     <message>
         <location filename="datatablewindow.ui" line="48"/>
-        <location filename="datatablewindow.ui" line="232"/>
+        <location filename="datatablewindow.ui" line="225"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="datatablewindow.ui" line="55"/>
-        <location filename="datatablewindow.ui" line="242"/>
+        <location filename="datatablewindow.ui" line="235"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="103"/>
+        <location filename="datatablewindow.ui" line="96"/>
         <source>Decimals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="130"/>
+        <location filename="datatablewindow.ui" line="123"/>
         <source>Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="137"/>
+        <location filename="datatablewindow.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit. To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="140"/>
+        <location filename="datatablewindow.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit.  To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="189"/>
+        <location filename="datatablewindow.ui" line="182"/>
         <source>Unit Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="194"/>
+        <location filename="datatablewindow.ui" line="187"/>
         <source>Conversion Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="199"/>
+        <location filename="datatablewindow.ui" line="192"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="222"/>
+        <location filename="datatablewindow.ui" line="215"/>
         <source>Enable Editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="249"/>
-        <source>Save Changes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="270"/>
-        <source>File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="280"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="293"/>
-        <source>Help</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="304"/>
-        <source>Import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="309"/>
+        <location filename="datatablewindow.ui" line="245"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="314"/>
+        <location filename="datatablewindow.ui" line="266"/>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="274"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="287"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="310"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="319"/>
+        <location filename="datatablewindow.ui" line="315"/>
         <source>Change Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="324"/>
+        <location filename="datatablewindow.ui" line="320"/>
         <source>Undo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="329"/>
+        <location filename="datatablewindow.ui" line="325"/>
         <source>Redo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="334"/>
+        <location filename="datatablewindow.ui" line="330"/>
         <source>Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="339"/>
+        <location filename="datatablewindow.ui" line="335"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="342"/>
+        <location filename="datatablewindow.ui" line="338"/>
         <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="347"/>
+        <location filename="datatablewindow.ui" line="343"/>
         <source>Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="352"/>
+        <location filename="datatablewindow.ui" line="348"/>
         <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>NewUnitDialog</name>
+    <message>
+        <location filename="newunitdialog.ui" line="17"/>
+        <source>Create New Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="newunitdialog.ui" line="30"/>
+        <source>Unit Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="newunitdialog.ui" line="44"/>
+        <source>Master Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="newunitdialog.ui" line="56"/>
+        <source>Clone Data From Existing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="newunitdialog.ui" line="67"/>
+        <source>Existing Unit Data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

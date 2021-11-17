@@ -1,0 +1,20 @@
+Unit Type,Mass Flow Rate,
+Master Unit,kg/h,
+Unit Name,Conversion Value,Notes
+kg/s,0.000277777777777778,
+kg/min,0.0166666666666667,
+tonne/day,0.024,Metric Tonne
+kg/day,24,
+lb/hr,2.20462,Pound Mass
+lb/min,0.0367436666666667,Pound Mass
+lb/s,0.000612394444444444,Pound Mass
+lb/day,52.91088,Pound Mass
+ton/day,0.02645544,US Customary Ton
+g/h,1000,
+g/min,16.6666666666667,
+g/s,0.277777777777778,
+g/day,24000,
+slug/h,0.06852177,
+slug/min,0.0011420295,
+slug/s,0.000019033825,
+slug/day,1.64452248,

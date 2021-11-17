@@ -1,0 +1,6 @@
+Unit Type,Temperature Change,
+Master Unit,Δ °C,
+Unit Name,Conversion Value,Notes
+Δ °K,1,
+Δ °R,1.8,
+Δ °F,1.8,

@@ -1,0 +1,6 @@
+Unit Type,Catalytic Activity,
+Master Unit,mol/s,
+Unit Name,Conversion Value,Notes
+kat,1,
+μmol/s,1000000,
+mol/h,3600,

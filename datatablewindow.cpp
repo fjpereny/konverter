@@ -1,6 +1,7 @@
 #include "datatablewindow.h"
 #include "ui_datatablewindow.h"
 #include "aboutdialog.h"
+#include "newunitdialog.h"
 #include <QFile>
 #include <QFileDialog>
 #include <QFileInfo>
@@ -8,6 +9,7 @@
 #include <iostream>
 #include <QLocale>
 #include <QClipboard>
+#include <QKeyEvent>
 
 
 DataTableWindow::DataTableWindow(QWidget *parent) :
@@ -92,8 +94,15 @@ void DataTableWindow::load_category_list()
     ui->unitTypeList->clear();
     for (int i=0; i<data_file_list->count(); i++)
     {
-        QString file_name = data_file_list->at(i).split(".").at(0);
-        ui->unitTypeList->addItem(file_name);
+        QStringList file_name_extension = data_file_list->at(i).split(".");
+        if (file_name_extension[1] == "dat")
+        {
+            ui->unitTypeList->addItem(file_name_extension[0]);
+        }
+        else if (file_name_extension[1] == "csv")
+        {
+            ui->unitTypeList->addItem(file_name_extension[0] + " (Custom)");
+        }
     }
 }
 
@@ -102,7 +111,7 @@ void DataTableWindow::refresh_data()
 {
     *enable_calcs = false;
     clear_data();
-    import_csv(ui->unitTypeList->currentItem()->text());
+    import_csv(ui->unitTypeList->currentItem()->text().split(" (Custom)")[0]);
     load_table();
     ui->inputValueLineEdit->setText("1");
     *prev_input_value = 1.0;
@@ -111,21 +120,21 @@ void DataTableWindow::refresh_data()
     *enable_calcs = true;
     set_edit_checkbox_status();
     status_bar_label->setText("");
-    ui->statusbar->setStyleSheet("background-color : none;");
+    ui->statusbar->setStyleSheet("");
 }
 
 
 void DataTableWindow::set_edit_checkbox_status()
 {
     QString selected = ui->unitTypeList->currentItem()->text();
-    if (selected.contains("(Built-In)"))
+    if (selected.contains("(Custom)"))
     {
-        ui->editCheckBox->setChecked(false);
-        ui->editCheckBox->setEnabled(false);
+        ui->editCheckBox->setEnabled(true);
     }
     else
     {
-        ui->editCheckBox->setEnabled(true);
+        ui->editCheckBox->setEnabled(false);
+        ui->editCheckBox->setChecked(false);
     }
 }
 
@@ -173,7 +182,7 @@ void DataTableWindow::import_csv(QString file_name)
             unit_names->append(line_list.at(0));
             unit_values->push_back(line_list.at(1).toDouble());
             displayed_values->push_back(line_list.at(1).toDouble());
-            if (line_list.size() == 3)
+            if (line_list.size() >= 3)
             {
                 unit_notes->append(line_list.at(2));
             }
@@ -264,12 +273,14 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
     {
         ui->addRowButton->setEnabled(true);
         ui->delRowButton->setEnabled(true);
+        ui->saveButton->setEnabled(true);
         ui->unitTable->setEditTriggers(QAbstractItemView::AllEditTriggers);
     }
     else
     {
         ui->addRowButton->setEnabled(false);
         ui->delRowButton->setEnabled(false);
+        ui->saveButton->setEnabled(false);
         ui->unitTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     }
 }
@@ -284,13 +295,13 @@ void DataTableWindow::on_unitTypeList_itemSelectionChanged()
 void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
 {
     status_bar_label->setText("");
-    ui->statusbar->setStyleSheet("background-color : none");
+    ui->inputValueLineEdit->setStyleSheet("");
+    ui->statusbar->setStyleSheet("");
     if (*enable_calcs)
     {
         double input_value = ui->inputValueLineEdit->text().toDouble();
         if (input_value != 0)
         {
-            ui->inputValueLineEdit->setPalette(QApplication::palette(ui->inputValueLineEdit));
             for (int i=0; i<displayed_values->size(); i++)
             {
                 displayed_values->at(i) *= input_value / (*prev_input_value);
@@ -303,8 +314,10 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         {
             if (ui->inputValueLineEdit->text() != "")
             {
+                ui->inputValueLineEdit->setStyleSheet("background-color : rgb(125, 50, 50);");
                 status_bar_label->setText("Invalid input...");
-                ui->statusbar->setStyleSheet("background-color : rgb(255, 100, 100);");
+                ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+                ui->unitTable->selectionModel()->clearSelection();
             }
         }
     }
@@ -337,7 +350,24 @@ void DataTableWindow::on_unitTable_itemSelectionChanged()
 void DataTableWindow::copy_selected_cells()
 {
     QModelIndexList index_list = ui->unitTable->selectionModel()->selectedIndexes();
-    if (ui->unitTable->hasFocus() && (index_list.count() > 0))
+    if (index_list.count() == 0)
+    {
+        // Check if input error to avoid clearing error from status bar
+        double input_value = ui->inputValueLineEdit->text().toDouble();
+        if (input_value == 0)
+        {
+            status_bar_label->setText("Invalid input...");
+            ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+        }
+        else
+        {
+            status_bar_label->setText("");
+            ui->statusbar->setStyleSheet("");
+        }
+        return;
+    }
+
+    if (ui->unitTable->hasFocus())
     {
         QString output("");
 
@@ -356,16 +386,78 @@ void DataTableWindow::copy_selected_cells()
         if (index_list.count() == 1)
         {
             status_bar_label->setText(" Cell copied to clipboard... ");
-            ui->statusbar->setStyleSheet("background-color : rgb(25, 125, 75);");
+            ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
         }
         else
         {
             status_bar_label->setText(" Cells copied to clipboard... ");
-            ui->statusbar->setStyleSheet("background-color : rgb(25, 125, 75);");
+            ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
         }
 
-        QClipboard *cb = QGuiApplication::clipboard();
-        cb->clear();
-        cb->setText(output);
+        QGuiApplication::clipboard()->clear();
+        QGuiApplication::clipboard()->setText(output);
     }
 }
+
+
+void DataTableWindow::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape)
+        ui->unitTable->selectionModel()->clearSelection();
+}
+
+void DataTableWindow::on_delTypeButton_clicked()
+{
+    QStringList file_name_list = ui->unitTypeList->currentItem()->text().split(" (Custom)");
+    if (file_name_list.count() == 1)
+    {
+        status_bar_label->setText("Default (built-in) data tables cannot be deleted.");
+        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+        return;
+    }
+
+    QString file_name = file_name_list[0];
+    QString file_path = QDir::currentPath() + "/data/" + file_name + ".csv";
+    QFile file(file_path);
+
+    if (file.exists())
+    {
+        QDir dir;
+        dir.remove(file_path);
+        read_file_names();
+        load_category_list();
+        ui->unitTypeList->setCurrentItem(ui->unitTypeList->item(0));
+        refresh_data();
+
+        status_bar_label->setText("Custom " + file_name + "successfully removed...");
+        ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
+    }
+
+    else
+    {
+        status_bar_label->setText("Custom " + file_name + " was not found...");
+        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+    }
+
+    file.close();
+}
+
+
+void DataTableWindow::on_addTypeButton_clicked()
+{
+    NewUnitDialog *d = new NewUnitDialog(this, data_file_list);
+    d->show();
+}
+
+
+void DataTableWindow::on_actionChange_Master_Unit_triggered()
+{
+    QStringList file_name_list = ui->unitTypeList->currentItem()->text().split(" (Custom)");
+    if (file_name_list.count() == 1)
+    {
+        status_bar_label->setText("Default (built-in) data tables cannot be modified.");
+        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+        return;
+    }
+}
+

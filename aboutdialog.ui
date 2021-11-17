@@ -45,7 +45,7 @@
            </font>
           </property>
           <property name="text">
-           <string>konverter 0.1</string>
+           <string>Konverter 0.1</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -55,7 +55,7 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Copyright © 2021 Frank Pereny</string>
+           <string>Copyright © 2021 &lt;a href=&quot;mailto:fjpereny@gmail.com&quot;&gt;Frank Pereny&lt;/a&gt;</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -65,7 +65,7 @@
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string>https://github.com/fjpereny/konverter</string>
+           <string>&lt;a href=&quot;https://github.com/fjpereny/konverter&quot;&gt;https://github.com/fjpereny/konverter&lt;/a&gt;</string>
           </property>
           <property name="openExternalLinks">
            <bool>true</bool>
