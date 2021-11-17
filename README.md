@@ -1,17 +1,9 @@
 # Konverter
-Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible unit converter.  Konverter is packaged with common engineering and scientifc conversions, and is fully extensible through the import, creation and modification of custom conversion tables.
+Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.
 
-Konverteris released under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) license.
 
----------------------------------------------------------------------------------
-
-### Supported Operating Systems
-Konverter is available for Linux, MacOS, and Windows.  For more information visit the [Supported Operating Systems Wiki](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems).
-
----------------------------------------------------------------------------------
-
-### License
-This software is released uner GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007.
+## License
+This software is released uner [GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 Copyright © 2021 Frank Pereny
 
@@ -19,12 +11,21 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
----------------------------------------------------------------------------------
 
-### Basic Use
+## Supported Operating Systems
+Konverter is available for Linux, MacOS, and Windows.  For more information visit the [Supported Operating Systems](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems) Wiki.
 
----------------------------------------------------------------------------------
 
-### Custom Conversion Tables
+## Features
+### Simple & Intuitive Interface
 
----------------------------------------------------------------------------------
+### Extensive Library of Engineering & Scientific Units
+
+### Instant Unit Conversion
+
+### One-Click Instant Copy
+
+### User-Defined Conversion Tables
+
+### USer-Friendly Data Format
+All data is stored in CSV (comma separated value) format and can be opened and edited in any spreadsheet or text-editing software.
