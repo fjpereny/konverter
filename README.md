@@ -29,5 +29,5 @@ Copy a single cell or range of data to the clipboard with a single click of the 
 ### User-Defined Conversion Tables
 Create, save and share your own customized units of measurement.
 
-### USer-Friendly Data Format
-Easily create your own automatic conversion tables without the need for special knowldege or software.  All data is stored in CSV (comma separated value) format and can be opened and edited in any spreadsheet or text-editing software.
+### User-Friendly Data Format
+Easily create, share and collaborate on data tables without the need for special knowldege or software.  All data is stored in a easy to understand CSV (comma separated value) format which can be edited with any spreadsheet or text-editing software.
