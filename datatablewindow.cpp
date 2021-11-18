@@ -93,7 +93,7 @@ void DataTableWindow::read_file_names()
 void DataTableWindow::load_category_list()
 {
     ui->unitTypeList->clear();
-    for (int i=0; i<data_file_list->count(); i++)
+    for (int i=0; i<data_file_list->count(); ++i)
     {
         QStringList file_name_extension = data_file_list->at(i).split(".");
         if (file_name_extension[1] == "dat")
@@ -166,6 +166,10 @@ void DataTableWindow::import_csv(QString file_name)
     {
         file_path = QDir::currentPath() + "/data/default/" + file_name + ".dat";
     }
+
+    // Stop if file not found
+    if (file_path.isEmpty())
+        return;
 
     QFile file(file_path);
     if (file.open(QIODevice::ReadOnly))
@@ -361,7 +365,7 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
             if (ui->inputValueLineEdit->text() != "")
             {
                 ui->inputValueLineEdit->setStyleSheet(Ui::red_background);
-                status_bar_label->setText("Invalid input...");
+                status_bar_label->setText(" Invalid input... ");
                 ui->statusbar->setStyleSheet(Ui::red_background);
                 ui->unitTable->selectionModel()->clearSelection();
             }
@@ -402,7 +406,7 @@ void DataTableWindow::copy_selected_cells()
         double input_value = ui->inputValueLineEdit->text().toDouble();
         if (input_value == 0)
         {
-            status_bar_label->setText("Invalid input...");
+            status_bar_label->setText(" Invalid input... ");
             ui->statusbar->setStyleSheet(Ui::red_background);
         }
         else
@@ -457,7 +461,7 @@ void DataTableWindow::on_delTypeButton_clicked()
     QStringList file_name_list = ui->unitTypeList->currentItem()->text().split(" (Custom)");
     if (file_name_list.count() == 1)
     {
-        status_bar_label->setText("Default (built-in) data tables cannot be deleted.");
+        status_bar_label->setText(" Default (built-in) data tables cannot be deleted.");
         ui->statusbar->setStyleSheet(Ui::red_background);
         return;
     }
@@ -475,13 +479,13 @@ void DataTableWindow::on_delTypeButton_clicked()
         ui->unitTypeList->setCurrentItem(ui->unitTypeList->item(0));
         refresh_data();
 
-        status_bar_label->setText("Custom " + file_name + "successfully removed...");
+        status_bar_label->setText(" " + file_name + " successfully removed... ");
         ui->statusbar->setStyleSheet(Ui::green_background);
     }
 
     else
     {
-        status_bar_label->setText("Custom " + file_name + " was not found...");
+        status_bar_label->setText(" Warning: " + file_name + ".csv was not found... ");
         ui->statusbar->setStyleSheet(Ui::red_background);
     }
 

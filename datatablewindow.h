@@ -21,8 +21,13 @@ class DataTableWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit DataTableWindow(QWidget *parent = nullptr);
+    explicit DataTableWindow(QWidget *parent = nullptr);    
     ~DataTableWindow();
+
+public :
+    void refresh_data();
+    void load_category_list();
+    void read_file_names();
 
 private slots:
 
@@ -56,9 +61,6 @@ private:
     void set_master_unit();
     void load_table();
     void clear_data();
-    void read_file_names();
-    void load_category_list();
-    void refresh_data();
     void set_edit_checkbox_status();
     void copy_selected_cells();
     void keyPressEvent(QKeyEvent *event);
