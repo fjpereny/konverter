@@ -34,6 +34,6 @@ Easily create, share and collaborate on data tables without the need for special
 
 
 ## Contributing
-Code contributions are welcome and appreciated!  Please read the [Contribution Guide Wiki]() for more information.
+Code contributions are welcome and appreciated!  Please read the [Contribution Guide Wiki](https://github.com/fjpereny/konverter/wiki/Contribution-Guide) for more information.
 
-[List of Konverter Contributors](https://github.com/fjpereny/konverter/wiki/Contribution-Guide)
+[List of Konverter Contributors](https://github.com/fjpereny/konverter/graphs/contributors)
