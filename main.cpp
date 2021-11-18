@@ -17,7 +17,11 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    DataTableWindow d;
-    d.show();
+
+    // Application Color Settings
+    QString background_blue = "background-color: rgb(0, 50, 100);";
+
+    DataTableWindow mainWin;
+    mainWin.show();
     return a.exec();
 }

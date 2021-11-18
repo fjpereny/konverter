@@ -10,6 +10,7 @@
 #include <QLocale>
 #include <QClipboard>
 #include <QKeyEvent>
+#include <QtCore>
 
 
 DataTableWindow::DataTableWindow(QWidget *parent) :
@@ -118,7 +119,6 @@ void DataTableWindow::refresh_data()
     load_unit_dropdown();
     set_master_unit();
     *enable_calcs = true;
-    set_edit_checkbox_status();
     status_bar_label->setText("");
     ui->statusbar->setStyleSheet("");
 }
@@ -126,7 +126,13 @@ void DataTableWindow::refresh_data()
 
 void DataTableWindow::set_edit_checkbox_status()
 {
-    QString selected = ui->unitTypeList->currentItem()->text();
+    if (ui->unitTypeList->selectedItems().count() == 0)
+    {
+        ui->editCheckBox->setEnabled(false);
+        return;
+    }
+
+    QString selected = ui->unitTypeList->selectedItems()[0]->text();
     if (selected.contains("(Custom)"))
     {
         ui->editCheckBox->setEnabled(true);
@@ -166,9 +172,11 @@ void DataTableWindow::import_csv(QString file_name)
     {
         QTextStream stream(&file);
 
-        QString unit_type = stream.readLine().split(",")[1];
+        // Skip line in CSV file
+        stream.readLine();
         *master_name = stream.readLine().split(",")[1];
-        QStringList csv_headers = stream.readLine().split(",");
+        // Skip line in CSV file
+        stream.readLine();
 
         unit_names->append(*master_name);
         unit_values->push_back(1.0);
@@ -238,12 +246,17 @@ void DataTableWindow::load_unit_dropdown()
     ui->refUnitCombo->addItems(*unit_names);
     ui->refUnitCombo->model()->sort(Qt::SortOrder::AscendingOrder);
     ui->refUnitCombo->setCurrentText(*master_name);
+
+    ui->masterCombo->clear();
+    ui->masterCombo->addItems(*unit_names);
+    ui->masterCombo->model()->sort(Qt::SortOrder::AscendingOrder);
+    ui->masterCombo->setCurrentText(*master_name);
 }
 
 
 void DataTableWindow::set_master_unit()
 {
-    ui->masterLineEdit->setText(*master_name);
+
 }
 
 
@@ -264,6 +277,7 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 
         load_table();
     }
+    set_edit_checkbox_status();
 }
 
 
@@ -271,17 +285,49 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 {
     if (checked)
     {
+        ui->inputValueLineEdit->setText("1");
+        ui->inputValueLineEdit->setEnabled(false);
+
         ui->addRowButton->setEnabled(true);
         ui->delRowButton->setEnabled(true);
         ui->saveButton->setEnabled(true);
+        ui->changeMasterButton->setEnabled(true);
+        ui->masterCombo->setEnabled(true);
+        ui->delTypeButton->setEnabled(false);
+        ui->addTypeButton->setEnabled(false);
+
         ui->unitTable->setEditTriggers(QAbstractItemView::AllEditTriggers);
+
+        status_bar_label->setText(" Table Edit Mode Enabled! ");
+        statusBar()->setStyleSheet(Ui::blue_background);
+
+        // Prevents modification of the master unit in table edit mode.
+        for (int i=0; i<unit_names->count(); i++)
+        {
+            if (ui->unitTable->item(i, 0)->text() == *master_name)
+            {
+                ui->unitTable->item(i, 0)->setFlags(Qt::ItemIsSelectable);
+                ui->unitTable->item(i, 1)->setFlags(Qt::ItemIsSelectable);
+                ui->unitTable->item(i, 2)->setFlags(Qt::ItemIsSelectable);
+            }
+        }
     }
     else
     {
+        ui->inputValueLineEdit->setEnabled(true);
+
         ui->addRowButton->setEnabled(false);
         ui->delRowButton->setEnabled(false);
         ui->saveButton->setEnabled(false);
+        ui->changeMasterButton->setEnabled(false);
+        ui->masterCombo->setEnabled(false);
+        ui->delTypeButton->setEnabled(true);
+        ui->addTypeButton->setEnabled(true);
+
         ui->unitTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+        status_bar_label->clear();
+        statusBar()->setStyleSheet("");
     }
 }
 
@@ -314,9 +360,9 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
         {
             if (ui->inputValueLineEdit->text() != "")
             {
-                ui->inputValueLineEdit->setStyleSheet("background-color : rgb(125, 50, 50);");
+                ui->inputValueLineEdit->setStyleSheet(Ui::red_background);
                 status_bar_label->setText("Invalid input...");
-                ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+                ui->statusbar->setStyleSheet(Ui::red_background);
                 ui->unitTable->selectionModel()->clearSelection();
             }
         }
@@ -357,7 +403,7 @@ void DataTableWindow::copy_selected_cells()
         if (input_value == 0)
         {
             status_bar_label->setText("Invalid input...");
-            ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+            ui->statusbar->setStyleSheet(Ui::red_background);
         }
         else
         {
@@ -386,12 +432,12 @@ void DataTableWindow::copy_selected_cells()
         if (index_list.count() == 1)
         {
             status_bar_label->setText(" Cell copied to clipboard... ");
-            ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
+            ui->statusbar->setStyleSheet(Ui::green_background);
         }
         else
         {
             status_bar_label->setText(" Cells copied to clipboard... ");
-            ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
+            ui->statusbar->setStyleSheet(Ui::green_background);
         }
 
         QGuiApplication::clipboard()->clear();
@@ -412,7 +458,7 @@ void DataTableWindow::on_delTypeButton_clicked()
     if (file_name_list.count() == 1)
     {
         status_bar_label->setText("Default (built-in) data tables cannot be deleted.");
-        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+        ui->statusbar->setStyleSheet(Ui::red_background);
         return;
     }
 
@@ -430,13 +476,13 @@ void DataTableWindow::on_delTypeButton_clicked()
         refresh_data();
 
         status_bar_label->setText("Custom " + file_name + "successfully removed...");
-        ui->statusbar->setStyleSheet("background-color : rgb(25, 100, 50);");
+        ui->statusbar->setStyleSheet(Ui::green_background);
     }
 
     else
     {
         status_bar_label->setText("Custom " + file_name + " was not found...");
-        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
+        ui->statusbar->setStyleSheet(Ui::red_background);
     }
 
     file.close();
@@ -447,17 +493,5 @@ void DataTableWindow::on_addTypeButton_clicked()
 {
     NewUnitDialog *d = new NewUnitDialog(this, data_file_list);
     d->show();
-}
-
-
-void DataTableWindow::on_actionChange_Master_Unit_triggered()
-{
-    QStringList file_name_list = ui->unitTypeList->currentItem()->text().split(" (Custom)");
-    if (file_name_list.count() == 1)
-    {
-        status_bar_label->setText("Default (built-in) data tables cannot be modified.");
-        ui->statusbar->setStyleSheet("background-color : rgb(125, 50, 50);");
-        return;
-    }
 }
 

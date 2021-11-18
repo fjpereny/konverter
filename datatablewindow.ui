@@ -125,21 +125,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="masterLineEdit">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit. To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <widget class="QComboBox" name="masterCombo">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
-          <property name="whatsThis">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;All units in the database are linked to the master unit.  To prevent circular logic errors, the master unit may not be directly modified.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="changeMasterButton">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
           <property name="text">
-           <string/>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
+           <string>Change Master</string>
           </property>
          </widget>
         </item>
@@ -273,14 +271,8 @@
     <property name="title">
      <string>Edit</string>
     </property>
-    <addaction name="actionUndo"/>
-    <addaction name="actionRedo"/>
     <addaction name="separator"/>
-    <addaction name="actionCut"/>
-    <addaction name="actionCopy"/>
-    <addaction name="actionPaste"/>
     <addaction name="separator"/>
-    <addaction name="actionChange_Master_Unit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -308,39 +300,6 @@
   <action name="actionClose">
    <property name="text">
     <string>Close</string>
-   </property>
-  </action>
-  <action name="actionChange_Master_Unit">
-   <property name="text">
-    <string>Change Master Unit</string>
-   </property>
-  </action>
-  <action name="actionUndo">
-   <property name="text">
-    <string>Undo</string>
-   </property>
-  </action>
-  <action name="actionRedo">
-   <property name="text">
-    <string>Redo</string>
-   </property>
-  </action>
-  <action name="actionCut">
-   <property name="text">
-    <string>Cut</string>
-   </property>
-  </action>
-  <action name="actionCopy">
-   <property name="text">
-    <string>Copy</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
-   </property>
-  </action>
-  <action name="actionPaste">
-   <property name="text">
-    <string>Paste</string>
    </property>
   </action>
   <action name="actionAbout">
