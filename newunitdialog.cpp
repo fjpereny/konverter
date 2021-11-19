@@ -4,7 +4,7 @@
 #include <QDir>
 #include <QErrorMessage>
 
-NewUnitDialog::NewUnitDialog(QWidget *parent, QStringList *data_file_list) :
+NewUnitDialog::NewUnitDialog(QWidget *parent, QStringList *data_file_list, QString *folder_separator) :
     QMainWindow(parent),
     ui(new Ui::NewUnitDialog)
 {

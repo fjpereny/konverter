@@ -1,8 +1,14 @@
 #include "datatablewindow.h"
-
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QString>
+
+
+QString folder_sep = "/";
+#ifdef Q_OS_WIN32
+QString folder_sep = "\\";
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -18,10 +24,15 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Application Color Settings
-    QString background_blue = "background-color: rgb(0, 50, 100);";
+    // Application File System Settings
+    #ifndef Q_OS_WIN32
+    QString *folder_seperator = new QString("/");
+    #endif
+    #ifdef Q_OS_WIN32
+    QString *folder_seperator = new QString("\\");
+    #endif
 
-    DataTableWindow mainWin;
+    DataTableWindow mainWin(nullptr, folder_seperator);
     mainWin.show();
     return a.exec();
 }

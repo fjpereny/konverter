@@ -14,7 +14,7 @@ class NewUnitDialog : public QMainWindow
 
 public:
     explicit NewUnitDialog(QWidget *parent = nullptr);
-    NewUnitDialog(QWidget *parent = nullptr, QStringList *file_list = nullptr);
+    NewUnitDialog(QWidget *parent = nullptr, QStringList *file_list = nullptr, QString *folder_separator = nullptr);
     ~NewUnitDialog();
 
 private slots:
