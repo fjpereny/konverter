@@ -107,21 +107,30 @@ void NewUnitDialog::on_buttonBox_accepted()
         // Clone button NOT checked.
         else
         {
-            QString new_file_name = ui->nameLineEdit->text() + ".csv";
-            QString file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep;
+            if (ui->masterLineEdit->text().isEmpty())
+            {
+                QMessageBox *mb = new QMessageBox(this);
+                mb->setText("Mater Unit name invald.");
+                mb->show();
+            }
 
-            QFile file(file_path + new_file_name);
-            file.open(QFile::OpenModeFlag::ReadWrite);
+            else
+            {
+                QString new_file_name = ui->nameLineEdit->text() + ".csv";
+                QString file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep;
 
-            QTextStream stream(&file);
+                QFile file(file_path + new_file_name);
+                file.open(QFile::OpenModeFlag::ReadWrite);
 
-            stream << "Unit Type, " + new_file_name << "\n";
-            stream << "Master Unit, " + ui->masterLineEdit->text() + "\n";
-            stream << "Unit Name, Conversion Value, Notes";
-            stream.flush();
-            file.close();
+                QTextStream stream(&file);
+
+                stream << "Unit Type, " + new_file_name << "\n";
+                stream << "Master Unit, " + ui->masterLineEdit->text() + "\n";
+                stream << "Unit Name, Conversion Value, Notes";
+                stream.flush();
+                file.close();
+            }
         }
-
         ((DataTableWindow*)parent())->read_file_names();
         ((DataTableWindow*)parent())->load_category_list();
         this->close();

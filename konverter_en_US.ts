@@ -4,27 +4,27 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="aboutdialog.ui" line="14"/>
+        <location filename="aboutdialog.ui" line="17"/>
         <source>About konverter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="aboutdialog.ui" line="48"/>
+        <location filename="aboutdialog.ui" line="47"/>
         <source>Konverter 0.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="aboutdialog.ui" line="58"/>
+        <location filename="aboutdialog.ui" line="57"/>
         <source>Copyright © 2021 &lt;a href=&quot;mailto:fjpereny@gmail.com&quot;&gt;Frank Pereny&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="aboutdialog.ui" line="68"/>
+        <location filename="aboutdialog.ui" line="67"/>
         <source>&lt;a href=&quot;https://github.com/fjpereny/konverter&quot;&gt;https://github.com/fjpereny/konverter&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="aboutdialog.ui" line="81"/>
+        <location filename="aboutdialog.ui" line="80"/>
         <source>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</source>
@@ -39,84 +39,84 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="23"/>
+        <location filename="datatablewindow.ui" line="27"/>
         <source>Unit Type or Category</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="48"/>
-        <location filename="datatablewindow.ui" line="223"/>
+        <location filename="datatablewindow.ui" line="52"/>
+        <location filename="datatablewindow.ui" line="227"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="55"/>
-        <location filename="datatablewindow.ui" line="233"/>
+        <location filename="datatablewindow.ui" line="59"/>
+        <location filename="datatablewindow.ui" line="237"/>
         <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="96"/>
+        <location filename="datatablewindow.ui" line="100"/>
         <source>Decimals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="123"/>
+        <location filename="datatablewindow.ui" line="127"/>
         <source>Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="140"/>
+        <location filename="datatablewindow.ui" line="144"/>
         <source>Change Master</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="180"/>
+        <location filename="datatablewindow.ui" line="184"/>
         <source>Unit Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="185"/>
+        <location filename="datatablewindow.ui" line="189"/>
         <source>Conversion Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="190"/>
+        <location filename="datatablewindow.ui" line="194"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="213"/>
+        <location filename="datatablewindow.ui" line="217"/>
         <source>Enable Editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="243"/>
+        <location filename="datatablewindow.ui" line="247"/>
         <source>Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="264"/>
+        <location filename="datatablewindow.ui" line="268"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="272"/>
+        <location filename="datatablewindow.ui" line="276"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="279"/>
+        <location filename="datatablewindow.ui" line="283"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="302"/>
+        <location filename="datatablewindow.ui" line="306"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="307"/>
+        <location filename="datatablewindow.ui" line="311"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>

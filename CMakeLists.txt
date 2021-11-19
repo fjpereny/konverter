@@ -30,6 +30,8 @@ set(PROJECT_SOURCES
         newunitdialog.h
         newunitdialog.cpp
         newunitdialog.ui
+
+        icons.qrc
         ${TS_FILES}
 )
 

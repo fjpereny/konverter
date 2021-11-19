@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>954</width>
-    <height>615</height>
+    <width>900</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Konverter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/256x256.png</normaloff>:/icons/icons/256x256.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -255,7 +259,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>954</width>
+     <width>900</width>
      <height>23</height>
     </rect>
    </property>
@@ -308,6 +312,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
