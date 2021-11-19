@@ -2,14 +2,17 @@
 #include "ui_newunitdialog.h"
 #include <QFile>
 #include <QDir>
-#include <QErrorMessage>
+#include <QMessageBox>
+#include <iostream>
 
-NewUnitDialog::NewUnitDialog(QWidget *parent, QStringList *data_file_list, QString *folder_separator) :
+NewUnitDialog::NewUnitDialog(QWidget *parent, QStringList *data_file_list, const QString *folder_separator) :
     QMainWindow(parent),
-    ui(new Ui::NewUnitDialog)
+    ui(new Ui::NewUnitDialog),
+    fold_sep(new const QString)
+
 {
     ui->setupUi(this);
-
+    fold_sep = folder_separator;
 
     for (int i=0; i<data_file_list->count(); i++)
     {
@@ -57,22 +60,83 @@ void NewUnitDialog::on_buttonBox_accepted()
 {
     if (ui->nameLineEdit->text().isEmpty())
     {
-        QErrorMessage *e = new QErrorMessage(this);
-        e->showMessage("Name cannot be empty.");
+         QMessageBox *mb = new QMessageBox(this);
+         mb->setText("File name cannot be empty.");
+         mb->show();
     }
 
-    else if (ui->cloneCheckBox->isChecked())
+    else if (ui->nameLineEdit->text().contains(" (Custom)"))
     {
-        QString old_file_name = ui->existingListBox->selectedItems()[0]->text();
-        QString new_file_name = ui->nameLineEdit->text();
+        QMessageBox *mb = new QMessageBox(this);
+        mb->setText("Invalid filename:\nThe file name cannot contain \"(Custom)\"");
+        mb->show();
+    }
 
-        QFile::copy(QDir::currentPath() + "/data/default/" + old_file_name + ".dat",
-                    QDir::currentPath() + "/data/" + new_file_name + ".csv");
+    else if (reserved_char(ui->nameLineEdit->text()))
+    {
+        QMessageBox *mb = new QMessageBox(this);
+        mb->setText("Invalid filename:\nThe file name contains invalid characters.");
+        mb->show();
+    }
+
+    else
+    {
+        if (ui->cloneCheckBox->isChecked())
+        {
+            QString new_file_name = ui->nameLineEdit->text();
+            QString old_file = ui->existingListBox->selectedItems()[0]->text();
+            QString old_file_path;
+            if (old_file.contains(" (Custom)"))
+            {
+                QString old_file_name = old_file.split(" (Custom)")[0];
+                old_file_path = QDir::currentPath() +  *fold_sep + "data" + *fold_sep +
+                        old_file_name + ".csv";
+            }
+            else
+            {
+                old_file_path = QDir::currentPath() +  *fold_sep + "data" + *fold_sep +
+                        "default" + *fold_sep + old_file + ".dat";
+            }
+
+            QString new_file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep +
+                    new_file_name + ".csv";
+
+            QFile::copy(old_file_path, new_file_path);
+        }
+
+        // Clone button NOT checked.
+        else
+        {
+            QString new_file_name = ui->nameLineEdit->text() + ".csv";
+            QString file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep;
+
+            QFile file(file_path + new_file_name);
+            file.open(QFile::OpenModeFlag::ReadWrite);
+
+            QTextStream stream(&file);
+
+            stream << "Unit Type, " + new_file_name << "\n";
+            stream << "Master Unit, " + ui->masterLineEdit->text() + "\n";
+            stream << "Unit Name, Conversion Value, Notes";
+            stream.flush();
+            file.close();
+        }
 
         ((DataTableWindow*)parent())->read_file_names();
         ((DataTableWindow*)parent())->load_category_list();
-
         this->close();
     }
 }
 
+bool NewUnitDialog::reserved_char(QString input)
+{
+    QString reserved = "<>:*\"/\\|?";
+    for (int i=0; i<reserved.count(); ++i)
+    {
+        if (input.contains(reserved.at(i)))
+        {
+            return true;
+        }
+    }
+    return false;
+}

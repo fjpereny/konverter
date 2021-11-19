@@ -13,7 +13,7 @@
 #include <QtCore>
 
 
-DataTableWindow::DataTableWindow(QWidget *parent, QString *folder_seperator) :
+DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperator) :
     QMainWindow(parent),
     ui(new Ui::DataTableWindow),
     unit_names(new QStringList),
@@ -27,11 +27,10 @@ DataTableWindow::DataTableWindow(QWidget *parent, QString *folder_seperator) :
     sig_digits(new int),
     error_entry_red(new QPalette),
     status_bar_label(new QLabel),
-    fold_sep(new QString)
+    fold_sep(new const QString)
 
 {   
     *enable_calcs = false;
-
     fold_sep = folder_seperator;
 
     ui->setupUi(this);
@@ -499,7 +498,7 @@ void DataTableWindow::on_delTypeButton_clicked()
 
 void DataTableWindow::on_addTypeButton_clicked()
 {
-    NewUnitDialog *d = new NewUnitDialog(this, data_file_list);
+    NewUnitDialog *d = new NewUnitDialog(this, data_file_list, fold_sep);
     d->show();
 }
 

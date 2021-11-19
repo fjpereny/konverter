@@ -14,7 +14,7 @@ class NewUnitDialog : public QMainWindow
 
 public:
     explicit NewUnitDialog(QWidget *parent = nullptr);
-    NewUnitDialog(QWidget *parent = nullptr, QStringList *file_list = nullptr, QString *folder_separator = nullptr);
+    NewUnitDialog(QWidget *parent = nullptr, QStringList *file_list = nullptr, const QString *folder_separator = nullptr);
     ~NewUnitDialog();
 
 private slots:
@@ -25,8 +25,11 @@ private slots:
 
     void on_buttonBox_accepted();
 
+    bool reserved_char(QString input);
+
 private:
     Ui::NewUnitDialog *ui;
+    const QString *fold_sep;
 };
 
 #endif // NEWUNITDIALOG_H

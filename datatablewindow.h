@@ -21,7 +21,7 @@ class DataTableWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit DataTableWindow(QWidget *parent = nullptr, QString *folder_sep = nullptr);
+    explicit DataTableWindow(QWidget *parent = nullptr, const QString *folder_sep = nullptr);
     ~DataTableWindow();
 
 public :
@@ -55,7 +55,7 @@ private:
     int *sig_digits;
     QPalette *error_entry_red;
     QLabel *status_bar_label;
-    QString *fold_sep;
+    const QString *fold_sep;
 
     void import_csv(QString file_name);
     void load_unit_dropdown();

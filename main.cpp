@@ -5,9 +5,17 @@
 #include <QString>
 
 
-QString folder_sep = "/";
+// Operating System Selection
+#ifdef Q_OS_LINUX
+const QString *folder_sep = new QString("/");
+#endif
+
+#ifdef Q_OS_MACX
+const QString *folder_sep = new QString("/");
+#endif
+
 #ifdef Q_OS_WIN32
-QString folder_sep = "\\";
+const QString *folder_sep = new QString("\\");
 #endif
 
 int main(int argc, char *argv[])
@@ -24,15 +32,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Application File System Settings
-    #ifndef Q_OS_WIN32
-    QString *folder_seperator = new QString("/");
-    #endif
-    #ifdef Q_OS_WIN32
-    QString *folder_seperator = new QString("\\");
-    #endif
-
-    DataTableWindow mainWin(nullptr, folder_seperator);
+    DataTableWindow mainWin(nullptr, folder_sep);
     mainWin.show();
     return a.exec();
 }
