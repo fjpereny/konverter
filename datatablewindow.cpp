@@ -292,6 +292,9 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 {
     if (checked)
     {
+        ui->refUnitCombo->setCurrentText(*master_name);
+        ui->refUnitCombo->setEnabled(false);
+
         ui->inputValueLineEdit->setText("1");
         ui->inputValueLineEdit->setEnabled(false);
 
@@ -306,21 +309,26 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
         ui->unitTable->setEditTriggers(QAbstractItemView::AllEditTriggers);
 
         status_bar_label->setText(" Table Edit Mode Enabled! ");
-        statusBar()->setStyleSheet(Ui::blue_background);
+        statusBar()->setStyleSheet(Ui::yellow_background);
 
         // Prevents modification of the master unit in table edit mode.
         for (int i=0; i<unit_names->count(); i++)
         {
             if (ui->unitTable->item(i, 0)->text() == *master_name)
             {
-                ui->unitTable->item(i, 0)->setFlags(Qt::ItemIsSelectable);
-                ui->unitTable->item(i, 1)->setFlags(Qt::ItemIsSelectable);
-                ui->unitTable->item(i, 2)->setFlags(Qt::ItemIsSelectable);
+                Qt::ItemFlags current_flags;
+                current_flags = ui->unitTable->item(i, 0)->flags();
+                ui->unitTable->item(i, 0)->setFlags(current_flags & (~Qt::ItemFlag::ItemIsEditable));
+                current_flags = ui->unitTable->item(i, 1)->flags();
+                ui->unitTable->item(i, 1)->setFlags(current_flags & (~Qt::ItemFlag::ItemIsEditable));
+                current_flags = ui->unitTable->item(i, 2)->flags();
+                ui->unitTable->item(i, 2)->setFlags(current_flags & (~Qt::ItemFlag::ItemIsEditable));
             }
         }
     }
     else
     {
+        ui->refUnitCombo->setEnabled(true);
         ui->inputValueLineEdit->setEnabled(true);
 
         ui->addRowButton->setEnabled(false);
@@ -500,5 +508,31 @@ void DataTableWindow::on_addTypeButton_clicked()
 {
     NewUnitDialog *d = new NewUnitDialog(this, data_file_list, fold_sep);
     d->show();
+}
+
+
+void DataTableWindow::on_addRowButton_clicked()
+{
+    ui->unitTable->setRowCount(ui->unitTable->rowCount() + 1);
+}
+
+
+void DataTableWindow::on_delRowButton_clicked()
+{
+    QList<QTableWidgetItem *> selected_items = ui->unitTable->selectedItems();
+    QList<int> selected_rows;
+    for (QTableWidgetItem *item : selected_items)
+    {
+        if (!selected_rows.contains(item->row()))
+            selected_rows.append(item->row());
+    }
+
+    // Offset for removed rows (all rows shift up when one is removed)
+    int removed_counter = 0;
+    for (int i=0; i<selected_rows.count(); ++i)
+    {
+        ui->unitTable->removeRow(selected_rows.at(i) - removed_counter);
+        ++removed_counter;
+    }
 }
 

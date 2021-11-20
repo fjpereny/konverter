@@ -5,7 +5,8 @@
     <name>AboutDialog</name>
     <message>
         <location filename="aboutdialog.ui" line="17"/>
-        <source>About konverter</source>
+        <source>About Konverter</source>
+        <oldsource>About konverter</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -7,7 +7,7 @@
 namespace Ui {
 class DataTableWindow;
 
-const static QString blue_background = "background-color: rgb(255, 255, 100);"
+const static QString yellow_background = "background-color: rgb(255, 255, 100);"
                                        "color: rgb(0, 0, 0);";
 const static QString red_background = "background-color : rgb(125, 50, 50);"
                                       "color: rgb(255, 255, 255);";
@@ -41,6 +41,10 @@ private slots:
     void on_unitTable_itemSelectionChanged();
     void on_delTypeButton_clicked();
     void on_addTypeButton_clicked();
+
+    void on_addRowButton_clicked();
+
+    void on_delRowButton_clicked();
 
 private:
     Ui::DataTableWindow *ui;
