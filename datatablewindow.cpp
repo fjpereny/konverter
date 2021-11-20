@@ -410,6 +410,8 @@ void DataTableWindow::on_unitTable_itemSelectionChanged()
 {
     if (ui->editCheckBox->isChecked())
     {
+        status_bar_label->setText(" Table Edit Mode Enabled! ");
+        statusBar()->setStyleSheet(Ui::yellow_background);
         check_table_bools();
     }
 
@@ -488,7 +490,15 @@ void DataTableWindow::check_table_bools()
     bool *valid = new bool(false);
     for (int i=0; i<ui->unitTable->rowCount(); ++i)
     {
-        ui->unitTable->item(i, 1)->text().toDouble(valid);
+        // If row doesn't have an item (such as after adding row) add an item.
+        QTableWidgetItem *item = ui->unitTable->item(i, 1);
+        if (!item)
+        {
+            item = new QTableWidgetItem();
+            ui->unitTable->setItem(i, 1, item);
+        }
+
+        item->text().toDouble(valid);
         if (*valid)
         {
             ui->unitTable->item(i, 1)->setBackground(Qt::NoBrush);
@@ -498,6 +508,8 @@ void DataTableWindow::check_table_bools()
         {
             ui->unitTable->item(i, 1)->setBackground(Qt::red);
             ui->unitTable->item(i, 1)->setForeground(Qt::white);
+            status_bar_label->setText(" Invalid input... ");
+            ui->statusbar->setStyleSheet(Ui::red_background);
         }
     }
     delete valid;
@@ -509,6 +521,8 @@ void DataTableWindow::keyReleaseEvent(QKeyEvent *event)
     // Check for errors in edited text (must be a double)
     if (ui->editCheckBox->isChecked())
     {
+        status_bar_label->setText(" Table Edit Mode Enabled! ");
+        statusBar()->setStyleSheet(Ui::yellow_background);
         ui->unitTable->selectionModel()->clear();
         check_table_bools();
     }
