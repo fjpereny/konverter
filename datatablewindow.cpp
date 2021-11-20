@@ -290,6 +290,10 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 
 void DataTableWindow::on_editCheckBox_toggled(bool checked)
 {
+    // In case user toggles the checkbox before a key entry or selection change
+    check_table_bools();
+    ui->unitTable->selectionModel()->clear();
+
     if (checked)
     {
         ui->refUnitCombo->setCurrentText(*master_name);
@@ -404,7 +408,16 @@ void DataTableWindow::on_actionAbout_triggered()
 
 void DataTableWindow::on_unitTable_itemSelectionChanged()
 {
-    copy_selected_cells();
+    if (ui->editCheckBox->isChecked())
+    {
+        check_table_bools();
+    }
+
+    if (!ui->editCheckBox->isChecked())
+    {
+        copy_selected_cells();
+    }
+
 }
 
 
@@ -464,7 +477,41 @@ void DataTableWindow::copy_selected_cells()
 void DataTableWindow::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_Escape)
+    {
         ui->unitTable->selectionModel()->clearSelection();
+    }
+}
+
+
+void DataTableWindow::check_table_bools()
+{
+    bool *valid = new bool(false);
+    for (int i=0; i<ui->unitTable->rowCount(); ++i)
+    {
+        ui->unitTable->item(i, 1)->text().toDouble(valid);
+        if (*valid)
+        {
+            ui->unitTable->item(i, 1)->setBackground(Qt::NoBrush);
+            ui->unitTable->item(i, 1)->setForeground(Qt::NoBrush);
+        }
+        else
+        {
+            ui->unitTable->item(i, 1)->setBackground(Qt::red);
+            ui->unitTable->item(i, 1)->setForeground(Qt::white);
+        }
+    }
+    delete valid;
+    valid = nullptr;
+}
+
+void DataTableWindow::keyReleaseEvent(QKeyEvent *event)
+{
+    // Check for errors in edited text (must be a double)
+    if (ui->editCheckBox->isChecked())
+    {
+        ui->unitTable->selectionModel()->clear();
+        check_table_bools();
+    }
 }
 
 void DataTableWindow::on_delTypeButton_clicked()

@@ -69,6 +69,8 @@ private:
     void set_edit_checkbox_status();
     void copy_selected_cells();
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
+    void check_table_bools();
 
 };
 
