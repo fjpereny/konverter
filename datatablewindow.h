@@ -60,6 +60,7 @@ private:
     QPalette *error_entry_red;
     QLabel *status_bar_label;
     const QString *fold_sep;
+    bool *unsaved_changes;
 
     void import_csv(QString file_name);
     void load_unit_dropdown();

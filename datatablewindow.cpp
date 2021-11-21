@@ -11,6 +11,7 @@
 #include <QClipboard>
 #include <QKeyEvent>
 #include <QtCore>
+#include <QMessageBox>
 
 
 DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperator) :
@@ -27,7 +28,8 @@ DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperato
     sig_digits(new int),
     error_entry_red(new QPalette),
     status_bar_label(new QLabel),
-    fold_sep(new const QString)
+    fold_sep(new const QString),
+    unsaved_changes(new bool)
 
 {   
     *enable_calcs = false;
@@ -55,6 +57,8 @@ DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperato
 
     ui->statusbar->addWidget(status_bar_label);
     status_bar_label->setText("");
+
+    *unsaved_changes = false;
 }
 
 DataTableWindow::~DataTableWindow()
@@ -296,6 +300,8 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 
     if (checked)
     {
+        *unsaved_changes = true;
+
         ui->refUnitCombo->setCurrentText(*master_name);
         ui->refUnitCombo->setEnabled(false);
 
@@ -304,7 +310,6 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 
         ui->addRowButton->setEnabled(true);
         ui->delRowButton->setEnabled(true);
-        ui->saveButton->setEnabled(true);
         ui->changeMasterButton->setEnabled(true);
         ui->masterCombo->setEnabled(true);
         ui->delTypeButton->setEnabled(false);
@@ -337,7 +342,6 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 
         ui->addRowButton->setEnabled(false);
         ui->delRowButton->setEnabled(false);
-        ui->saveButton->setEnabled(false);
         ui->changeMasterButton->setEnabled(false);
         ui->masterCombo->setEnabled(false);
         ui->delTypeButton->setEnabled(true);
@@ -347,6 +351,22 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
 
         status_bar_label->clear();
         statusBar()->setStyleSheet("");
+    }
+
+    if ((!checked) && *unsaved_changes)
+    {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this,
+                                      "Unsaved Changes",
+                                      "Save all changes to conversion table?");
+        if (reply == QMessageBox::Yes)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
 
@@ -584,8 +604,13 @@ void DataTableWindow::on_delRowButton_clicked()
     QList<int> selected_rows;
     for (QTableWidgetItem *item : selected_items)
     {
-        if (!selected_rows.contains(item->row()))
-            selected_rows.append(item->row());
+        if (!(ui->unitTable->item(item->row(), 0)->text() == *master_name))
+        {
+            if (!selected_rows.contains(item->row()))
+            {
+                selected_rows.append(item->row());
+            }
+        }
     }
 
     // Offset for removed rows (all rows shift up when one is removed)

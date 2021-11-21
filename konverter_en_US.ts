@@ -46,14 +46,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
     </message>
     <message>
         <location filename="datatablewindow.ui" line="52"/>
-        <location filename="datatablewindow.ui" line="227"/>
-        <source>Add</source>
+        <source>Add Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="datatablewindow.ui" line="59"/>
-        <location filename="datatablewindow.ui" line="237"/>
-        <source>Del</source>
+        <source>Delete Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -92,32 +90,37 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="247"/>
-        <source>Save</source>
+        <location filename="datatablewindow.ui" line="227"/>
+        <source>Add Row</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="268"/>
+        <location filename="datatablewindow.ui" line="237"/>
+        <source>Delete Row</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="datatablewindow.ui" line="258"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="276"/>
+        <location filename="datatablewindow.ui" line="266"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="283"/>
+        <location filename="datatablewindow.ui" line="273"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="306"/>
+        <location filename="datatablewindow.ui" line="296"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="311"/>
+        <location filename="datatablewindow.ui" line="301"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
