@@ -386,7 +386,7 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
             QFile file(file_path);
             if (file.open(QFile::WriteOnly))
             {
-                QDataStream stream(&file);
+                QTextStream stream(&file);
                 stream << output;
                 file.flush();
             }
