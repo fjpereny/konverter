@@ -361,11 +361,37 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
                                       "Save all changes to conversion table?");
         if (reply == QMessageBox::Yes)
         {
+            QString selected_name = ui->unitTypeList->selectedItems()[0]->text().split(" (Custom)")[0];
+            QString output("Unit Type, " + selected_name + "\n");
+            output.append("Master Unit, " + *master_name + "\n");
+            output.append("Unit Name, Conversion Value, Notes\n");
 
-        }
-        else
-        {
+            for (int i=0; i<ui->unitTable->rowCount(); ++i)
+            {
+                // Skip the master unit
+                if (ui->unitTable->item(i, 0)->text() != *master_name)
+                {
+                    output.append(ui->unitTable->item(i, 0)->text());
+                    output.append(",");
+                    QString value = ui->unitTable->item(i, 1)->text();
+                    value.replace(",", "");
+                    output.append(value);
+                    output.append(",");
+                    output.append(ui->unitTable->item(i, 2)->text());
+                    output.append("\n");
+                }
+            }
 
+            QString  file_path(QDir::currentPath() + *fold_sep + "data" + *fold_sep + selected_name + ".csv");
+            QFile file(file_path);
+            if (file.open(QFile::WriteOnly))
+            {
+                QDataStream stream(&file);
+                stream << output;
+                file.flush();
+            }
+            file.close();
+            refresh_data();
         }
     }
 }
@@ -595,6 +621,14 @@ void DataTableWindow::on_addTypeButton_clicked()
 void DataTableWindow::on_addRowButton_clicked()
 {
     ui->unitTable->setRowCount(ui->unitTable->rowCount() + 1);
+    int new_row = ui->unitTable->rowCount() - 1;
+
+    QTableWidgetItem *new_unit = new QTableWidgetItem("New Unit");
+    QTableWidgetItem *new_value = new QTableWidgetItem("1.0");
+    QTableWidgetItem *new_note = new QTableWidgetItem();
+    ui->unitTable->setItem(new_row, 0, new_unit);
+    ui->unitTable->setItem(new_row, 1, new_value);
+    ui->unitTable->setItem(new_row, 2, new_note);
 }
 
 
