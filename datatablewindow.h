@@ -61,6 +61,7 @@ private:
     QLabel *status_bar_label;
     const QString *fold_sep;
     bool *unsaved_changes;
+    bool *error_detected;
 
     void import_csv(QString file_name);
     void load_unit_dropdown();

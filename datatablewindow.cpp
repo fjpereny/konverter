@@ -29,7 +29,8 @@ DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperato
     error_entry_red(new QPalette),
     status_bar_label(new QLabel),
     fold_sep(new const QString),
-    unsaved_changes(new bool)
+    unsaved_changes(new bool),
+    error_detected(new bool)
 
 {   
     *enable_calcs = false;
@@ -59,6 +60,7 @@ DataTableWindow::DataTableWindow(QWidget *parent, const QString *folder_seperato
     status_bar_label->setText("");
 
     *unsaved_changes = false;
+    *error_detected = false;
 }
 
 DataTableWindow::~DataTableWindow()
@@ -298,6 +300,13 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
     check_table_bools();
     ui->unitTable->selectionModel()->clear();
 
+    if (*error_detected)
+    {
+        *error_detected = false;
+        ui->editCheckBox->setChecked(true);
+        return;
+    }
+
     if (checked)
     {
         *unsaved_changes = true;
@@ -362,9 +371,9 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
         if (reply == QMessageBox::Yes)
         {
             QString selected_name = ui->unitTypeList->selectedItems()[0]->text().split(" (Custom)")[0];
-            QString output("Unit Type, " + selected_name + "\n");
-            output.append("Master Unit, " + *master_name + "\n");
-            output.append("Unit Name, Conversion Value, Notes\n");
+            QString output("Unit Type," + selected_name + "\n");
+            output.append("Master Unit," + *master_name + "\n");
+            output.append("Unit Name,Conversion Value,Notes\n");
 
             for (int i=0; i<ui->unitTable->rowCount(); ++i)
             {
@@ -533,6 +542,8 @@ void DataTableWindow::keyPressEvent(QKeyEvent *event)
 
 void DataTableWindow::check_table_bools()
 {
+    *error_detected = false;
+
     bool *valid = new bool(false);
     for (int i=0; i<ui->unitTable->rowCount(); ++i)
     {
@@ -552,6 +563,7 @@ void DataTableWindow::check_table_bools()
         }
         else
         {
+            *error_detected = true;
             ui->unitTable->item(i, 1)->setBackground(Qt::red);
             ui->unitTable->item(i, 1)->setForeground(Qt::white);
             status_bar_label->setText(" Invalid input... ");
