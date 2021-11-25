@@ -114,11 +114,40 @@ void DataTableWindow::load_category_list()
             ui->unitTypeList->addItem(file_name_extension[0] + " (Custom)");
         }
     }
+
+    // Add non-table units here
+    ui->unitTypeList->addItem("Temperature");
+
+    ui->unitTypeList->sortItems(Qt::AscendingOrder);
 }
 
 
 void DataTableWindow::refresh_data()
 {
+    // For Non-Tabled Data
+    if (ui->unitTypeList->currentItem()->text() == "Temperature")
+    {
+        *enable_calcs = false;
+        clear_data();
+
+        ui->inputValueLineEdit->setText("0");
+
+        *unit_names = {"C", "F", "K", "R"};
+        *displayed_values = {0, 32, 273.15, 491.67};
+        *unit_notes = {"Master Unit", "", "", ""};
+        *master_name = "C";
+
+        load_unit_dropdown();
+        load_table();
+
+        *enable_calcs = true;
+        status_bar_label->setText("");
+        ui->statusbar->setStyleSheet("");
+
+        return;
+    }
+
+    // For Tabled Data
     *enable_calcs = false;
     clear_data();
     import_csv(ui->unitTypeList->currentItem()->text().split(" (Custom)")[0]);
@@ -275,6 +304,17 @@ void DataTableWindow::set_master_unit()
 
 void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 {
+    // Temperature
+    if (ui->unitTypeList->currentItem()->text() == "Temperature")
+    {
+        if (*enable_calcs)
+        {
+            on_inputValueLineEdit_textChanged("");
+            load_table();
+        }
+        return;
+    }
+
     if (*enable_calcs)
     {
         QString target_unit = ui->refUnitCombo->currentText();
@@ -419,6 +459,49 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
     ui->statusbar->setStyleSheet("");
     if (*enable_calcs)
     {
+        // Temperature Calculation
+        if (ui->unitTypeList->currentItem()->text() == "Temperature")
+        {
+            bool *valid = new bool(false);
+            double input_value = ui->inputValueLineEdit->text().toDouble(valid);
+            if (*valid == true)
+            {
+                // Convert input value to temperature in C
+                double temp_in_C = input_value;
+                if (ui->refUnitCombo->currentText() == "F")
+                    temp_in_C = (input_value - 32) * 5/9;
+                else if (ui->refUnitCombo->currentText() == "K")
+                    temp_in_C = input_value - 273.15;
+                else if (ui->refUnitCombo->currentText() == "R")
+                    temp_in_C = (input_value * 5/9) - 273.15;
+
+                for (int i=0; i<unit_names->count(); ++i)
+                {
+                    if (unit_names->at(i) == "C")
+                        displayed_values->at(i) = temp_in_C;
+                    else if (unit_names->at(i) == "F")
+                        displayed_values->at(i) = (temp_in_C * 9/5) + 32;
+                    else if (unit_names->at(i) == "K")
+                        displayed_values->at(i) = temp_in_C + 273.15;
+                    else if (unit_names->at(i) == "R")
+                        displayed_values->at(i) = (temp_in_C + 273.15) * 9 / 5;
+                }
+                load_table();
+            }
+            else
+            {
+                if (ui->inputValueLineEdit->text() != "")
+                {
+                    ui->inputValueLineEdit->setStyleSheet(Ui::red_background);
+                    status_bar_label->setText(" Invalid input... ");
+                    ui->statusbar->setStyleSheet(Ui::red_background);
+                    ui->unitTable->selectionModel()->clearSelection();
+                }
+            }
+            return;
+        }
+
+        // Table Calculations
         double input_value = ui->inputValueLineEdit->text().toDouble();
         if (input_value != 0)
         {
