@@ -105,21 +105,16 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
     </message>
     <message>
         <location filename="datatablewindow.ui" line="266"/>
-        <source>Edit</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="datatablewindow.ui" line="273"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="296"/>
+        <location filename="datatablewindow.ui" line="288"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="301"/>
+        <location filename="datatablewindow.ui" line="293"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
