@@ -46,7 +46,7 @@ private slots:
 
     void on_delRowButton_clicked();
 
-    void on_changeMasterButton_clicked();
+    void  on_changeMasterButton_clicked();
 
 private:
     Ui::DataTableWindow *ui;
