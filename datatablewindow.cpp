@@ -765,3 +765,32 @@ void DataTableWindow::remove_data_commas()
     }
 
 }
+
+void DataTableWindow::on_changeMasterButton_clicked()
+{
+    *enable_calcs = false;
+    QString old_master = *master_name;
+    *master_name = ui->masterCombo->currentText();
+    QString master_value_str;
+    double master_value = 0;
+
+//    unit_notes->replaceInStrings("Master Unit", "");
+    for (int i=0; i<ui->unitTable->rowCount(); ++i)
+    {
+        if (ui->unitTable->item(i, 0)->text() == *master_name)
+        {
+            master_value_str = ui->unitTable->item(i, 1)->text();
+            master_value = master_value_str.toDouble();
+        }
+        else if (ui->unitTable->item(i, 0)->text() == old_master)
+            ui->unitTable->item(i, 2)->setText("");
+    }
+    for (int i=0; i<unit_values->size(); ++i)
+    {
+        unit_values->at(i) /= master_value;
+        displayed_values->at(i) /= master_value;
+    }
+
+    *enable_calcs = true;
+    load_table();
+}

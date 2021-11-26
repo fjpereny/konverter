@@ -46,6 +46,8 @@ private slots:
 
     void on_delRowButton_clicked();
 
+    void on_changeMasterButton_clicked();
+
 private:
     Ui::DataTableWindow *ui;
     QStringList *unit_names;
@@ -74,7 +76,6 @@ private:
     void keyReleaseEvent(QKeyEvent *event);
     void check_table_bools();
     void remove_data_commas();
-
 };
 
 #endif // DATATABLEWINDOW_H
