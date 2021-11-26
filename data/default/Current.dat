@@ -1,0 +1,10 @@
+Unit Type,Current,
+Master Unit,ampere [A],
+Unit Name,Conversion Value,Notes
+abampere [abA],0.1,
+biot [biot],0.1,
+faraday(chemical)/second [F(chem)/s],1.03637699846649E-05,
+Microampere [μA],1.00E+06,
+miliampere [mA],1.00E+03,
+statampere [statA],2997601918.46523,
+coulomb/second [C/s],1,

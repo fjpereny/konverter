@@ -73,6 +73,7 @@ private:
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *event);
     void check_table_bools();
+    void remove_data_commas();
 
 };
 

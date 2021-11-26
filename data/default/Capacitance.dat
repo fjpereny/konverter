@@ -1,0 +1,7 @@
+Unit Type,Capacitance,
+Master Unit,F,
+Unit Name,Conversion Value,Notes
+mF,1000,
+μF,1.00E+07,
+nF,1.00E+10,
+pF,1.00E+13,

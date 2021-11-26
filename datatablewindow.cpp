@@ -337,8 +337,11 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 void DataTableWindow::on_editCheckBox_toggled(bool checked)
 {
     // In case user toggles the checkbox before a key entry or selection change
+    *enable_calcs = false;
+    remove_data_commas();
     check_table_bools();
     ui->unitTable->selectionModel()->clear();
+    *enable_calcs = true;
 
     if (*error_detected)
     {
@@ -751,3 +754,14 @@ void DataTableWindow::on_delRowButton_clicked()
     }
 }
 
+
+void DataTableWindow::remove_data_commas()
+{
+    for (int i=0; i<ui->unitTable->rowCount(); ++i)
+    {
+        QTableWidgetItem *item;
+        item = ui->unitTable->item(i, 1);
+        item->setText(item->text().remove(','));
+    }
+
+}

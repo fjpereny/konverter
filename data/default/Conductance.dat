@@ -1,0 +1,11 @@
+Unit Type,Conductance,
+Master Unit,siemens [S],
+Unit Name,Conversion Value,Notes
+mho [mho],1,
+gigasiemens [GS],0.000000001,
+picosiemens [pS],1000000000000,
+absiemens [abS],0.000000001,
+abmho [abmho],0.000000001,
+statmho [statmho],898755224014.74,
+megasiemens [MS],0.000001,
+kilosiemens [kS],1.00E-03,
