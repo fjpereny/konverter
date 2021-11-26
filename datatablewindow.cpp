@@ -132,10 +132,10 @@ void DataTableWindow::refresh_data()
 
         ui->inputValueLineEdit->setText("0");
 
-        *unit_names = {"C", "F", "K", "R"};
+        *unit_names = {"°C", "°F", "°K", "°R"};
         *displayed_values = {0, 32, 273.15, 491.67};
         *unit_notes = {"Master Unit", "", "", ""};
-        *master_name = "C";
+        *master_name = "°C";
 
         load_unit_dropdown();
         load_table();
@@ -468,22 +468,22 @@ void DataTableWindow::on_inputValueLineEdit_textChanged(const QString &arg1)
             {
                 // Convert input value to temperature in C
                 double temp_in_C = input_value;
-                if (ui->refUnitCombo->currentText() == "F")
+                if (ui->refUnitCombo->currentText() == "°F")
                     temp_in_C = (input_value - 32) * 5/9;
-                else if (ui->refUnitCombo->currentText() == "K")
+                else if (ui->refUnitCombo->currentText() == "°K")
                     temp_in_C = input_value - 273.15;
-                else if (ui->refUnitCombo->currentText() == "R")
+                else if (ui->refUnitCombo->currentText() == "°R")
                     temp_in_C = (input_value * 5/9) - 273.15;
 
                 for (int i=0; i<unit_names->count(); ++i)
                 {
-                    if (unit_names->at(i) == "C")
+                    if (unit_names->at(i) == "°C")
                         displayed_values->at(i) = temp_in_C;
-                    else if (unit_names->at(i) == "F")
+                    else if (unit_names->at(i) == "°F")
                         displayed_values->at(i) = (temp_in_C * 9/5) + 32;
-                    else if (unit_names->at(i) == "K")
+                    else if (unit_names->at(i) == "°K")
                         displayed_values->at(i) = temp_in_C + 273.15;
-                    else if (unit_names->at(i) == "R")
+                    else if (unit_names->at(i) == "°R")
                         displayed_values->at(i) = (temp_in_C + 273.15) * 9 / 5;
                 }
                 load_table();
