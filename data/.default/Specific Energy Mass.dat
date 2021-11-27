@@ -1,0 +1,8 @@
+Unit Type,Specific Energy – Mass,
+Master Unit,kJ/kg,
+Unit Name,Conversion Value,Notes
+J/g,1,
+GJ/t,1.00E-03,gigajoule/tonne
+kcal/kg,0.23885,
+Btu(IT)/lb,0.4299,British thermal unit (international table)/pound
+kWh/kg,0.0002778,

@@ -89,7 +89,7 @@ void DataTableWindow::read_file_names()
 {
     ui->unitTypeList->clear();
 
-    QString path_default_files = QDir::currentPath() + *fold_sep + "data" + *fold_sep + "default" + *fold_sep;
+    QString path_default_files = QDir::currentPath() + *fold_sep + "data" + *fold_sep + ".default" + *fold_sep;
     QString path_custom_files = QDir::currentPath() + *fold_sep + "data" + *fold_sep;
 
     QDir dir_default(path_default_files);
@@ -200,9 +200,9 @@ void DataTableWindow::import_csv(QString file_name)
         file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep + file_name + ".csv";
     }
 
-    else if (QFileInfo::exists(QDir::currentPath() + *fold_sep + "data" + *fold_sep + "default" + *fold_sep + file_name + ".dat"))
+    else if (QFileInfo::exists(QDir::currentPath() + *fold_sep + "data" + *fold_sep + ".default" + *fold_sep + file_name + ".dat"))
     {
-        file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep + "default" + *fold_sep + file_name + ".dat";
+        file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep + ".default" + *fold_sep + file_name + ".dat";
     }
 
     // Stop if file not found

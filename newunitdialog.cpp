@@ -95,7 +95,7 @@ void NewUnitDialog::on_buttonBox_accepted()
             else
             {
                 old_file_path = QDir::currentPath() +  *fold_sep + "data" + *fold_sep +
-                        "default" + *fold_sep + old_file + ".dat";
+                        ".default" + *fold_sep + old_file + ".dat";
             }
 
             QString new_file_path = QDir::currentPath() + *fold_sep + "data" + *fold_sep +

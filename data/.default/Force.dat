@@ -1,0 +1,14 @@
+Unit Type,Force,
+Master Unit,N,
+Unit Name,Conversion Value,Notes
+kg-m/s2,1,
+J/m,1,
+dyn,0.00001,
+kp,0.102,kilopond
+kgf,0.102,
+pdl,7.233,poundal
+lbf,0.2248,
+ozf,3.5969,
+kip,0.000522,
+kN,0.001,
+tonf,0.0001124,

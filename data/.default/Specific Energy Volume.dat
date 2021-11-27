@@ -1,0 +1,8 @@
+Unit Type,Specific Energy – Volume,
+Master Unit,kcal/m3,
+Unit Name,Conversion Value,Notes
+Btu/ft3,0.1124,
+Btu/gal(US liq),0.01501,
+Btu/liter,0.003966,
+J/m3,4186.8,
+kJ/m3,4.1868,
