@@ -1,6 +1,7 @@
 # Konverter
 Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.  It features a large library built-in conversion tables and allows users to quicly and easily create custom units and conversions.
 
+![Konverter Main Window](https://github.com/fjpereny/konverter/blob/main/images/default-folder.png) "Koverter Main Window (Linux - KDE Plasma Breeze Dark Theme)"
 
 ## Supported Operating Systems
 Konverter is available for Linux, MacOS, and Windows.  For more information visit the [Supported Operating Systems](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems) Wiki.
