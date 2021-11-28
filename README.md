@@ -1,7 +1,9 @@
 # Konverter
-Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.  It features a large library built-in conversion tables and allows users to quicly and easily create custom units and conversions.
+Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.  It features a large library built-in conversion tables and allows users to quicly and easily create custom units and conversions.  Easily create and share data tables.  All data is stored in a easy to understand CSV (comma separated value) format that can be edited with any spreadsheet or text-editing software.
 
-![Konverter Main Window](https://github.com/fjpereny/konverter/blob/main/images/default-folder.png) "Koverter Main Window (Linux - KDE Plasma Breeze Dark Theme)"
+![Konverter Main Window](https://github.com/fjpereny/konverter/blob/main/images/konverter-main-window.png)
+
+<p style="text-align: center">Koverter Main Window (Linux - KDE Plasma Breeze Dark Theme)</p>
 
 ## Supported Operating Systems
 Konverter is available for Linux, MacOS, and Windows.  For more information visit the [Supported Operating Systems](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems) Wiki.
@@ -18,20 +20,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 
 ## Features
-### Simple & Intuitive Interface
-
-### Extensive Library of Engineering & Scientific Units
-
-### Instant Unit Conversion
-
-### One-Click Instant Copy
-Copy a single cell or range of data to the clipboard with a single click of the mouse.
-
-### User-Defined Conversion Tables
-Create, save and share your own customized units of measurement.
-
-### User-Friendly Data Format
-Easily create, share and collaborate on data tables without the need for special knowldege or software.  All data is stored in a easy to understand CSV (comma separated value) format which can be edited with any spreadsheet or text-editing software.
+    - Simple & Intuitive Interface
+    - Extensive Library of Engineering & Scientific Units
+    - Instant Unit Conversion
+    - One-Click Instant Copy
+    - User-Defined Conversion Tables
+    - User-Friendly Data Format
 
 
 ## Contributing
