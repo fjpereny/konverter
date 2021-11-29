@@ -79,7 +79,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="refUnitCombo"/>
+         <widget class="QComboBox" name="refUnitCombo">
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="horizontalSpacer_3">
@@ -132,6 +136,9 @@
          <widget class="QComboBox" name="masterCombo">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QComboBox::AdjustToContents</enum>
           </property>
          </widget>
         </item>

@@ -54,67 +54,67 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="100"/>
+        <location filename="datatablewindow.ui" line="104"/>
         <source>Decimals</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="127"/>
+        <location filename="datatablewindow.ui" line="131"/>
         <source>Master Unit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="144"/>
+        <location filename="datatablewindow.ui" line="151"/>
         <source>Change Master</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="184"/>
+        <location filename="datatablewindow.ui" line="191"/>
         <source>Unit Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="189"/>
+        <location filename="datatablewindow.ui" line="196"/>
         <source>Conversion Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="194"/>
+        <location filename="datatablewindow.ui" line="201"/>
         <source>Notes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="217"/>
+        <location filename="datatablewindow.ui" line="224"/>
         <source>Enable Editing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="227"/>
+        <location filename="datatablewindow.ui" line="234"/>
         <source>Add Row</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="237"/>
+        <location filename="datatablewindow.ui" line="244"/>
         <source>Delete Row</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="258"/>
+        <location filename="datatablewindow.ui" line="265"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="266"/>
+        <location filename="datatablewindow.ui" line="273"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="288"/>
+        <location filename="datatablewindow.ui" line="295"/>
         <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="datatablewindow.ui" line="293"/>
+        <location filename="datatablewindow.ui" line="300"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>

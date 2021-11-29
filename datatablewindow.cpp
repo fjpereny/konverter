@@ -336,6 +336,7 @@ void DataTableWindow::on_refUnitCombo_currentIndexChanged(int index)
 
 void DataTableWindow::on_editCheckBox_toggled(bool checked)
 {
+
     // In case user toggles the checkbox before a key entry or selection change
     *enable_calcs = false;
     remove_data_commas();
@@ -353,6 +354,9 @@ void DataTableWindow::on_editCheckBox_toggled(bool checked)
     if (checked)
     {
         *unsaved_changes = true;
+
+        // Set to maximum 7 digit precision while edit mode is active
+        ui->decimalSpinBox->setValue(7);
 
         ui->refUnitCombo->setCurrentText(*master_name);
         ui->refUnitCombo->setEnabled(false);
@@ -769,6 +773,9 @@ void DataTableWindow::remove_data_commas()
 void DataTableWindow::on_changeMasterButton_clicked()
 {
     *enable_calcs = false;
+
+    ui->refUnitCombo->setCurrentText(ui->masterCombo->currentText());
+
     unit_notes->replaceInStrings("Master Unit", "");
     *master_name = ui->masterCombo->currentText();
     double master_value = 0;
@@ -788,4 +795,6 @@ void DataTableWindow::on_changeMasterButton_clicked()
     }
     *enable_calcs = true;
     load_table();
+
+    ui->editCheckBox->toggle();
 }
