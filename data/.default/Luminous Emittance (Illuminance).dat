@@ -1,0 +1,11 @@
+Unit Type,Luminous Emittance (Illuminance),
+Master Unit,lm/cm2,
+Unit Name,Conversion Value,Notes
+ph,1,phot
+lx,1.00E+04,Lux
+fc,929.03,footcandle
+lm/in2,6.4516,lumin per square inch
+lm/ft2,929.03,lumin per square foot
+nox,1.00E+07,nox
+mlx,1.00E+07,millilux
+Glx,1.00E-05,gigalux
