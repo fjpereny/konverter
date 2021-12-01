@@ -17,6 +17,8 @@ Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and
 ## Supported Operating Systems
 Konverter is available for Linux, MacOS, and Windows.  For more information visit the [Supported Operating Systems](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems) Wiki.
 
+![Konverter Windows](https://github.com/fjpereny/konverter/blob/main/images/Konverter%20Windows.png)
+<p style="text-align: center;">Konverter Windows 10</p>
 
 ## License
 This software is released uner [GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007](https://www.gnu.org/licenses/gpl-3.0.en.html).
