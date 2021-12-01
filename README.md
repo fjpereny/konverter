@@ -1,8 +1,8 @@
 # Konverter
-Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.  It features a large library built-in conversion tables and allows users to quicly and easily create custom units and conversions.  Easily create and share data tables.  All data is stored in a easy to understand CSV (comma separated value) format that can be edited with any spreadsheet or text-editing software.
+Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and extensible engineering and scientific unit converter.  It features a large library built-in conversion tables and allows users to quickly and easily create custom units and conversions.  All data is stored in an easy to understand [CSV (Comma Separated Value)](https://en.wikipedia.org/wiki/Comma-separated_values) format that can be edited with any spreadsheet or text-editing software.
 
 ![Konverter Main Window](https://github.com/fjpereny/konverter/blob/main/images/konverter-main-window.png)
-<p style="text-align: center">Koverter Main Window (Linux - KDE Plasma Breeze Dark Theme)</p>
+<p style="text-align: center;">Konverter Main Window (Linux - KDE Plasma Breeze Dark Theme)</p>
 
 
 ## Features
