@@ -1,0 +1,61 @@
+Unit Type,Length,
+Master Unit,m,
+Unit Name,Conversion Value,Notes
+cm,100,
+ft,3.28084,
+in,39.37008,
+km,0.001,
+mile,0.000621371192237,
+mm,1000,
+Nm,0.000539956803456,Nautical Mile
+yd,1.09361,
+Aln,1.68413,
+Angstrom,10000000000,
+Arpent,0.01709,
+au,6.68449198E-12,Astronomical Unit
+Barleycorn,118.11024,
+caliber,3937.00787,
+Chain,0.04971,
+Cloth Nail,17.49799,
+Cloth Span,4.3745,
+Cubit,2.18725,Biblical
+Cubit,2.16084,Greek
+dm,10,
+dam,0.1,
+Famn,0.56138,
+Fathom,0.54681,
+fm,1000000000000000,
+Fermi,1000000000000000,
+Fingerbreadth,52.49344,Biblical
+Furlong,0.00497,
+Gm,1.00E-09,
+Hand,9.84252,
+Handbreadth,13.12336,Biblical
+hm,0.01,
+Ken,0.47206,
+kpc,3.24073E-20,Kiloparsec
+league,0.000207123730746,
+ly,1.0570234105361E-16,Light Year
+Link,4.97097,
+Long Cubit,1.87477,Biblical
+Long Reed,0.31246,Biblical
+micrometer,1000000,
+mil,39370.07874,1/1000th inch
+mil (Sweden),0.0001,
+mile (Roman),0.00068,
+nm,1000000000,
+pc,3.24072501E-17,parsec
+Perch,0.19884,
+Pica,236.22047,
+pm,1000000000000,
+Planck,6.25E+034,
+Point,2834.64567,
+Pole,0.19884,
+Rod,0.19884,
+Roman Actus,0.02819,
+Russian Archin,1.40629,
+Span,4.37511,Biblical
+Twip,56701.41732,
+Vara Castellana,1.19757,
+Vara Conuquera,0.39913,
+Vara De Terea,0.39919,

@@ -108,7 +108,7 @@
         <item>
          <widget class="QSpinBox" name="decimalSpinBox">
           <property name="maximum">
-           <number>7</number>
+           <number>25</number>
           </property>
          </widget>
         </item>
