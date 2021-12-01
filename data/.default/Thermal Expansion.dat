@@ -1,0 +1,6 @@
+Unit Type,Thermal Expansion,
+Master Unit,l/l/°C,
+Unit Name,Conversion Value,Notes
+l/l/°F,0.555555555555556,Length/Length/°F
+l/l/°R,0.555555555555556,Length/Length/°R
+l/l/°K,1,Length/Length/°K
