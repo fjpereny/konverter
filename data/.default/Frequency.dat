@@ -1,0 +1,15 @@
+Unit Type,Frequency,
+Master Unit,Hz,
+Unit Name,Conversion Value,Notes
+CPS,1,cycles/second
+RPM,60,
+CPM,60,cycles/minute
+MHz,0.000001,
+GHz,0.000000001,
+kHz,0.001,
+THz,1E-12,
+Cycles/Hour,3600,
+Cycles/Day,86400,
+Cycles/Week,604800,
+Cycles/Month,2592000,30 Day Month
+Cycles/Year,31536000,365 Day Year

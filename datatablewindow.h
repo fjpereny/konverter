@@ -7,12 +7,14 @@
 namespace Ui {
 class DataTableWindow;
 
-const static QString yellow_background = "background-color: rgb(255, 255, 100);"
-                                       "color: rgb(0, 0, 0);";
-const static QString red_background = "background-color : rgb(125, 50, 50);"
-                                      "color: rgb(255, 255, 255);";
-const static QString green_background = "background-color : rgb(0, 100, 50);"
+const static QString yellow_background =    "background-color: rgb(255, 255, 100);"
+                                            "color: rgb(0, 0, 0);";
+
+const static QString red_background =   "background-color : rgb(255, 0, 0);"
                                         "color: rgb(255, 255, 255);";
+
+const static QString green_background = "background-color : rgb(0, 255, 0);"
+                                        "color: rgb(0, 0, 0);";
 }
 
 
