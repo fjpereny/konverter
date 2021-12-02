@@ -1,0 +1,7 @@
+Unit Type,Radiation Exposure,
+Master Unit,C/kg,
+Unit Name, Conversion Value ,Notes
+A-s/kg,1,ampere-second per kilogram
+R,3875.97,roentgen
+German R,3875.97,German unit of radiation
+French R,8729.662162,French roentgen
