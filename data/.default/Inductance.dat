@@ -1,0 +1,16 @@
+Unit Type,Inductance,
+Master Unit,H,
+Unit Name, Conversion Value ,Notes
+mH,1000,millihenry
+uH,1000000,microhenry
+abH,1000000000,abhenry
+J/A^2,1,joule per square ampere
+nH,1000000000,nanohenry
+ohm-s,1,ohm second
+kg-m^2 / s^2-A^2,1,kilogram meter-squared per second-squared ampere-squared
+N-m / A^2,1,newton-meter per square ampere
+ohm/Hz,1,ohm per hertz
+T-m^2/A,1,tesla meter-squared per ampere
+Wb/A,1,weber per ampere
+Vs/A,1,volt second per ampere
+s^2/F,1,second-squared per farad
