@@ -9,6 +9,8 @@ Konverter is a [free](https://www.gnu.org/philosophy/free-sw.html), flexible and
 - User-Defined Conversion Tables
 - User-Friendly Data Format
 
+### Supported Units
+Konverter supports many common engineering and scientific units such as length, mass, time, pressure, temperature and more.  For a complete list visit the [Supported Units Wiki](https://github.com/fjpereny/konverter/wiki/Supported-Units).
 
 ## Supported Operating Systems
 Konverter is available for Linux, MacOS, and Windows.  Pre-compiled binaries are available for [download from the Releases page](https://github.com/fjpereny/konverter/releases).  For more information visit the [Supported Operating Systems](https://github.com/fjpereny/konverter/wiki/Supported-Operating-Systems) Wiki.
