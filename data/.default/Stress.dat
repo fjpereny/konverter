@@ -1,0 +1,15 @@
+Unit Type,Stress,
+Master Unit,Pa,
+Unit Name, Conversion Value ,Notes
+N/m^2,1,newton per square meter
+N/mm^2,0.000001,newton per square millimeter
+psi,0.00014504,pound per square inch
+kPa,0.001,kilopascal
+psf,0.02088576,pound per square foot
+MPa,0.000001,megapascal
+GPa,0.000000001,gigapascal
+ksi,1.45E-07,kilopound per square inch
+ksf,2.08854E-05,kilopound per square foot
+kg/cm^2,1.01972E-05,kilogram per square centimeter
+t(long)/m^2,0.0001,tonne (long) per square meter
+t(short)/ft^2,1.04427E-05,ton (short) per square foot
