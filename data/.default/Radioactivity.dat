@@ -1,0 +1,13 @@
+Unit Type,Radioactivity,
+Master Unit,Ci,
+Unit Name, Conversion Value ,Notes
+Bq,3.70E+10,becquerel
+Rd,3.70E+04,rutherford
+GBq,3.70E+01,gigabecquerel
+dpm,2.22E+12,disintegrations per minute
+dps,3.70E+10,disintegrations per second
+MBq,3.70E+04,megabecquerel
+kBq,3.70E+07,kilobecquerel
+mCi,1000,millicurie
+uCi,1000000,microcurie
+kCi,0.001,kilocurie
