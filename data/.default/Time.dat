@@ -1,0 +1,23 @@
+Unit Type, Time ,
+Master Unit,year,
+Unit Name, Conversion Value ,Notes
+min,525600,
+hour,8760,
+s,31536000,
+day,365,365 Day Year
+ms,31536000000,
+week,52.14285714,7 Day Week
+workweek,73,5 Day Week
+workday,1095,8 Hour Work Day
+month,12,Calendar
+month(28),13.03571429,28 Day Month
+month(30),12.16666667,30 Day Month
+month(29),12.5862069,29 Day Month
+month(31),11.77419355,31 Day Month
+year (leap),0.99726776,366 Day Year
+us,3.15E+13,microsecond
+ns,3.15E+16,nanosecond
+ps,3.15E+19,picosecond
+Decade,0.1,
+Century,0.01,
+Millenium,0.001,
