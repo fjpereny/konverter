@@ -1,0 +1,13 @@
+Unit Type,Area,
+Master Unit,m^2,
+Unit Name, Conversion Value ,Notes
+km^2,0.0000010000000000 ,Square Kilometer
+cm^2,10000.0000000000000000 ,Square Centimeter
+mm^2,1000000.0000000000000000 ,Square Millimeter
+um^2,1000000000000.0000000000000000 ,Square Micrometer
+Hectare,0.0001000000000000 ,
+mile^2,0.0000003861018768 ,Square Mile
+yd^2,1.1959900463000000 ,Square Yard
+ft^2,10.7639104170000000 ,Square Foot
+in^2,1550.0031000000000000 ,Square Inch
+Acre,0.0002471054000000 ,
